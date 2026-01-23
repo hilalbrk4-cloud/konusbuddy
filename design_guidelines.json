@@ -1,0 +1,168 @@
+{
+  "design_system": {
+    "typography": {
+      "font_family": {
+        "headings": "Nunito, sans-serif",
+        "body": "Quicksand, sans-serif"
+      },
+      "scale": {
+        "h1": "text-4xl md:text-6xl font-black tracking-tight",
+        "h2": "text-3xl md:text-4xl font-bold",
+        "h3": "text-2xl md:text-3xl font-bold",
+        "body_large": "text-xl font-medium leading-relaxed",
+        "body_default": "text-lg font-medium leading-relaxed",
+        "button_text": "text-xl font-bold uppercase tracking-wide"
+      }
+    },
+    "colors": {
+      "primary": {
+        "DEFAULT": "#4CC9F0",
+        "foreground": "#073B4C"
+      },
+      "secondary": {
+        "DEFAULT": "#FFD166",
+        "foreground": "#073B4C"
+      },
+      "accent": {
+        "DEFAULT": "#EF476F",
+        "foreground": "#FFFFFF"
+      },
+      "success": {
+        "DEFAULT": "#06D6A0",
+        "foreground": "#FFFFFF"
+      },
+      "background": {
+        "DEFAULT": "#F0F9FF",
+        "card": "#FFFFFF",
+        "overlay": "rgba(255, 255, 255, 0.9)"
+      },
+      "text": {
+        "primary": "#073B4C",
+        "secondary": "#118AB2",
+        "muted": "#8D99AE"
+      }
+    },
+    "spacing": {
+      "container_padding": "p-4 md:p-8",
+      "section_gap": "gap-8 md:gap-12",
+      "card_padding": "p-6 md:p-8"
+    },
+    "visual_enhancers": {
+      "border_radius": {
+        "default": "rounded-2xl",
+        "large": "rounded-3xl",
+        "full": "rounded-full"
+      },
+      "shadows": {
+        "card": "shadow-[0_8px_30px_rgb(0,0,0,0.08)]",
+        "button": "shadow-[0_6px_0_rgba(0,0,0,0.15)]",
+        "button_active": "active:shadow-none active:translate-y-[6px]"
+      },
+      "borders": {
+        "card": "border-2 border-white/50",
+        "input": "border-4 border-[#4CC9F0]/30 focus:border-[#4CC9F0]"
+      }
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#4CC9F0] text-[#073B4C] hover:bg-[#3DB5D8] rounded-full px-8 py-4 text-xl font-bold shadow-[0_6px_0_rgba(7,59,76,0.2)] active:shadow-none active:translate-y-[6px] transition-all",
+      "secondary": "bg-[#FFD166] text-[#073B4C] hover:bg-[#EBC05E] rounded-full px-8 py-4 text-xl font-bold shadow-[0_6px_0_rgba(7,59,76,0.2)] active:shadow-none active:translate-y-[6px] transition-all",
+      "accent": "bg-[#EF476F] text-white hover:bg-[#D63F62] rounded-full px-8 py-4 text-xl font-bold shadow-[0_6px_0_rgba(163,29,58,0.2)] active:shadow-none active:translate-y-[6px] transition-all",
+      "icon": "p-4 rounded-full bg-white shadow-lg hover:scale-110 transition-transform"
+    },
+    "cards": {
+      "exercise": "bg-white rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-b-8 border-r-8 border-[#4CC9F0]/20 hover:scale-[1.02] transition-transform duration-300 cursor-pointer",
+      "category": "bg-white rounded-3xl p-8 flex flex-col items-center gap-4 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all border-4 border-transparent hover:border-[#FFD166]",
+      "dashboard_stat": "bg-white rounded-2xl p-6 shadow-md border-l-8"
+    },
+    "inputs": {
+      "default": "w-full p-4 rounded-2xl bg-white border-4 border-[#E0F7FA] focus:border-[#4CC9F0] focus:outline-none text-lg font-medium text-[#073B4C] placeholder-[#8D99AE]"
+    },
+    "feedback": {
+      "success_modal": "fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50",
+      "success_content": "bg-white rounded-3xl p-8 flex flex-col items-center gap-6 animate-bounce-in shadow-2xl border-8 border-[#06D6A0]"
+    }
+  },
+  "layout_strategies": {
+    "landing_page": {
+      "hero": "flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16 py-12 md:py-24",
+      "grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    },
+    "dashboard": {
+      "grid": "grid grid-cols-1 md:grid-cols-4 gap-6",
+      "main_content": "col-span-1 md:col-span-3 space-y-8",
+      "sidebar": "col-span-1 bg-white rounded-3xl p-6 shadow-sm h-fit"
+    },
+    "exercise_screen": {
+      "container": "max-w-4xl mx-auto flex flex-col items-center gap-8 py-8",
+      "image_area": "w-full max-w-md aspect-square bg-white rounded-3xl shadow-lg p-4 flex items-center justify-center overflow-hidden border-8 border-[#FFD166]",
+      "controls": "flex gap-6 w-full justify-center mt-8"
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_main": {
+        "url": "https://images.unsplash.com/photo-1758612897668-ce0c153745e4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGNoaWxkJTIwdXNpbmclMjB0YWJsZXR8ZW58MHx8fHwxNzY5MTg1MDk2fDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Happy child using tablet for learning",
+        "category": "landing"
+      },
+      "category_animals": {
+        "url": "https://images.unsplash.com/photo-1582456891925-a53965520520?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwxfHxjdXRlJTIwZG9nfGVufDB8fHx8MTc2OTE4NTA5OHww&ixlib=rb-4.1.0&q=85",
+        "alt": "Cute dog representing animals category",
+        "category": "exercise_category"
+      },
+      "category_colors": {
+        "url": "https://images.unsplash.com/photo-1581972474615-db7014859d74?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGNyYXlvbnN8ZW58MHx8fHwxNzY5MTg1MTAwfDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Colorful crayons representing colors category",
+        "category": "exercise_category"
+      },
+      "category_objects": {
+        "url": "https://images.unsplash.com/photo-1630563451961-ac2ff27616ab?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzl8MHwxfHNlYXJjaHwxfHxyZWQlMjBhcHBsZXxlbnwwfHx8fDE3NjkxODUxMDJ8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Red apple representing daily objects category",
+        "category": "exercise_category"
+      },
+      "reward_trophy": {
+        "url": "https://images.unsplash.com/photo-1578269174936-2709b6aeb913?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxnb2xkJTIwdHJvcGh5fGVufDB8fHx8MTc2OTE4NTEwNHww&ixlib=rb-4.1.0&q=85",
+        "alt": "Gold trophy for achievement",
+        "category": "gamification"
+      },
+      "decoration_balloons": {
+        "url": "https://images.unsplash.com/photo-1563190804-b72e73c40b06?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwzfHxjb2xvcmZ1bCUyMGJhbGxvb25zfGVufDB8fHx8MTc2OTE4NTExM3ww&ixlib=rb-4.1.0&q=85",
+        "alt": "Colorful balloons for celebration",
+        "category": "decoration"
+      }
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "rounded-full bg-white p-2 text-[#4CC9F0]"
+    }
+  },
+  "accessibility": {
+    "contrast": "Ensure all text has at least 4.5:1 contrast ratio against background. Use #073B4C for text on light backgrounds.",
+    "touch_targets": "All interactive elements must be at least 48x48px (preferably 60x60px for children).",
+    "screen_reader": "All images must have descriptive alt text. Buttons must have aria-labels if icon-only.",
+    "motion": "Respect prefers-reduced-motion. Avoid flashing animations."
+  },
+  "instructions_to_main_agent": {
+    "general": "Build a 'SaaS for Kids' interface. It should feel like a game, not a form. Use the 'Bento' grid but make it chunky and colorful.",
+    "theme": "Force LIGHT MODE. Dark mode is not suitable for this specific child-focused application.",
+    "fonts": "Import 'Nunito' and 'Quicksand' from Google Fonts immediately.",
+    "animations": "Use Framer Motion for entrance animations (pop-in effect) and success celebrations (confetti).",
+    "speech_api": "Use the browser's native Web Speech API (window.speechSynthesis and window.webkitSpeechRecognition). Handle errors gracefully (e.g., if microphone is not allowed).",
+    "data_handling": "Mock the backend calls for now if the API is not ready, but structure the frontend to expect JSON responses for exercises."
+  },
+  "universal_guidelines": {
+    "do_not": [
+      "Do not use sharp corners (always rounded-xl or more).",
+      "Do not use small text (minimum 16px, preferably 18px+).",
+      "Do not use complex gradients (stick to flat colors or very subtle gradients).",
+      "Do not use 'Inter' font."
+    ],
+    "must_do": [
+      "Add 'data-testid' to all interactive elements.",
+      "Use 'sonner' for toast notifications (styled to look like speech bubbles).",
+      "Ensure the 'Microphone' button is the most prominent element on the exercise screen."
+    ]
+  }
+}
