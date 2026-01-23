@@ -1,0 +1,191 @@
+{
+  "summary": {
+    "total_tests": 30,
+    "passed_tests": 23,
+    "failed_tests": 7,
+    "success_rate": 76.66666666666667,
+    "timestamp": "2026-01-23T16:27:48.740108"
+  },
+  "detailed_results": [
+    {
+      "test": "Root Endpoint",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"message\": \"Konu\\u015fma Terapisi API'si \\u00e7al\\u0131\\u015f\\u0131yor!\"\n}...",
+      "timestamp": "2026-01-23T16:27:46.824138"
+    },
+    {
+      "test": "Health Check",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"status\": \"healthy\",\n  \"timestamp\": \"2026-01-23T16:27:46.863770+00:00\"\n}...",
+      "timestamp": "2026-01-23T16:27:46.866781"
+    },
+    {
+      "test": "User Registration",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzE0OTIxYy00NmJhLTRjNzYtYjYwOS1hNGI3ZDdhMjE2MmQiLCJlbWFpbCI6InRlc3RfdXNlcl8xNjI3NDZAZXhhbXBsZS5jb20iLCJleHAiOjE3NjkyNzIwNjd9.uPYaQ...",
+      "timestamp": "2026-01-23T16:27:47.127853"
+    },
+    {
+      "test": "Get Current User",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"id\": \"6314921c-46ba-4c76-b609-a4b7d7a2162d\",\n  \"name\": \"Test \\u00c7ocuk 162746\",\n  \"email\": \"test_user_162746@example.com\",\n  \"age\": 7,\n  \"parent_name\": \"Test Ebeveyn\",\n  \"created_at\": \"2026-01-2...",
+      "timestamp": "2026-01-23T16:27:47.161235"
+    },
+    {
+      "test": "User Login",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzE0OTIxYy00NmJhLTRjNzYtYjYwOS1hNGI3ZDdhMjE2MmQiLCJlbWFpbCI6InRlc3RfdXNlcl8xNjI3NDZAZXhhbXBsZS5jb20iLCJleHAiOjE3NjkyNzIwNjd9.uPYaQ...",
+      "timestamp": "2026-01-23T16:27:47.421908"
+    },
+    {
+      "test": "Get All Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"1\",\n    \"word\": \"Kedi\",\n    \"image_url\": \"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400\",\n    \"category\": \"animals\",\n    \"difficulty\": \"easy\",\n    \"pronunciation_...",
+      "timestamp": "2026-01-23T16:27:47.458964"
+    },
+    {
+      "test": "Get Easy Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"1\",\n    \"word\": \"Kedi\",\n    \"image_url\": \"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400\",\n    \"category\": \"animals\",\n    \"difficulty\": \"easy\",\n    \"pronunciation_...",
+      "timestamp": "2026-01-23T16:27:47.491530"
+    },
+    {
+      "test": "Get Medium Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"21\",\n    \"word\": \"Kelebek\",\n    \"image_url\": \"https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400\",\n    \"category\": \"animals\",\n    \"difficulty\": \"medium\",\n    \"pronunciati...",
+      "timestamp": "2026-01-23T16:27:47.529392"
+    },
+    {
+      "test": "Get Hard Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"41\",\n    \"word\": \"Sincap a\\u011faca t\\u0131rman\\u0131yor\",\n    \"image_url\": \"https://images.unsplash.com/photo-1507666405895-422eee7d517f?w=400\",\n    \"category\": \"animals\",\n    \"diffi...",
+      "timestamp": "2026-01-23T16:27:47.566885"
+    },
+    {
+      "test": "Get Animals Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"1\",\n    \"word\": \"Kedi\",\n    \"image_url\": \"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400\",\n    \"category\": \"animals\",\n    \"difficulty\": \"easy\",\n    \"pronunciation_...",
+      "timestamp": "2026-01-23T16:27:47.601045"
+    },
+    {
+      "test": "Get Colors Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"6\",\n    \"word\": \"K\\u0131rm\\u0131z\\u0131\",\n    \"image_url\": \"https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=400\",\n    \"category\": \"colors\",\n    \"difficulty\": \"easy\",\n    \"...",
+      "timestamp": "2026-01-23T16:27:47.635385"
+    },
+    {
+      "test": "Get Objects Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"11\",\n    \"word\": \"Top\",\n    \"image_url\": \"https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400\",\n    \"category\": \"objects\",\n    \"difficulty\": \"easy\",\n    \"pronunciation_hin...",
+      "timestamp": "2026-01-23T16:27:47.675316"
+    },
+    {
+      "test": "Get Foods Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"16\",\n    \"word\": \"Elma\",\n    \"image_url\": \"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400\",\n    \"category\": \"foods\",\n    \"difficulty\": \"easy\",\n    \"pronunciation_hint...",
+      "timestamp": "2026-01-23T16:27:47.708787"
+    },
+    {
+      "test": "Get Body_Parts Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"51\",\n    \"word\": \"El\",\n    \"image_url\": \"https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400\",\n    \"category\": \"body_parts\",\n    \"difficulty\": \"easy\",\n    \"pronunciatio...",
+      "timestamp": "2026-01-23T16:27:47.740638"
+    },
+    {
+      "test": "Get Phrases Exercises",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"46\",\n    \"word\": \"G\\u00fcnayd\\u0131n anne\",\n    \"image_url\": \"https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=400\",\n    \"category\": \"phrases\",\n    \"difficulty\": \"hard\",...",
+      "timestamp": "2026-01-23T16:27:47.780136"
+    },
+    {
+      "test": "Get Specific Exercise",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"id\": \"1\",\n  \"word\": \"Kedi\",\n  \"image_url\": \"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400\",\n  \"category\": \"animals\",\n  \"difficulty\": \"easy\",\n  \"pronunciation_hint\": \"Ke-di\"\n}...",
+      "timestamp": "2026-01-23T16:27:47.817826"
+    },
+    {
+      "test": "Get Categories",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"animals\",\n    \"name\": \"Hayvanlar\",\n    \"icon\": \"\\ud83d\\udc3e\",\n    \"color\": \"#4CC9F0\"\n  },\n  {\n    \"id\": \"colors\",\n    \"name\": \"Renkler\",\n    \"icon\": \"\\ud83c\\udfa8\",\n    \"color\": \"#FF...",
+      "timestamp": "2026-01-23T16:27:47.848823"
+    },
+    {
+      "test": "Get Difficulties",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"easy\",\n    \"name\": \"Kolay\",\n    \"description\": \"Tek heceli basit kelimeler\",\n    \"color\": \"#06D6A0\"\n  },\n  {\n    \"id\": \"medium\",\n    \"name\": \"Orta\",\n    \"description\": \"\\u00c7ok hecel...",
+      "timestamp": "2026-01-23T16:27:47.889938"
+    },
+    {
+      "test": "Save Progress",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"id\": \"a8ec4843-bcb3-45fb-a80a-24a6f5204de7\",\n  \"user_id\": \"6314921c-46ba-4c76-b609-a4b7d7a2162d\",\n  \"word_id\": \"1\",\n  \"word\": \"Kedi\",\n  \"spoken_word\": \"kedi\",\n  \"is_correct\": true,\n  \"difficulty\"...",
+      "timestamp": "2026-01-23T16:27:47.935198"
+    },
+    {
+      "test": "Get User Progress",
+      "success": true,
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"a8ec4843-bcb3-45fb-a80a-24a6f5204de7\",\n    \"user_id\": \"6314921c-46ba-4c76-b609-a4b7d7a2162d\",\n    \"word_id\": \"1\",\n    \"word\": \"Kedi\",\n    \"spoken_word\": \"kedi\",\n    \"is_correct\": true...",
+      "timestamp": "2026-01-23T16:27:47.974060"
+    },
+    {
+      "test": "Get User Stats",
+      "success": true,
+      "details": "Status: 200, Response: {\n  \"total_attempts\": 1,\n  \"correct_attempts\": 1,\n  \"accuracy_percentage\": 100.0,\n  \"easy_completed\": 1,\n  \"medium_completed\": 0,\n  \"hard_completed\": 0,\n  \"categories_progress\": {\n    \"animals\": {\n   ...",
+      "timestamp": "2026-01-23T16:27:48.010161"
+    },
+    {
+      "test": "Protected Route: exercises",
+      "success": false,
+      "details": "Status: 403, Error: {'detail': 'Not authenticated'}",
+      "timestamp": "2026-01-23T16:27:48.047646"
+    },
+    {
+      "test": "Protected Route: categories",
+      "success": false,
+      "details": "Status: 403, Error: {'detail': 'Not authenticated'}",
+      "timestamp": "2026-01-23T16:27:48.077911"
+    },
+    {
+      "test": "Protected Route: progress",
+      "success": false,
+      "details": "Status: 403, Error: {'detail': 'Not authenticated'}",
+      "timestamp": "2026-01-23T16:27:48.108072"
+    },
+    {
+      "test": "Protected Route: stats",
+      "success": false,
+      "details": "Status: 403, Error: {'detail': 'Not authenticated'}",
+      "timestamp": "2026-01-23T16:27:48.181497"
+    },
+    {
+      "test": "Protected Route: auth/me",
+      "success": false,
+      "details": "Status: 403, Error: {'detail': 'Not authenticated'}",
+      "timestamp": "2026-01-23T16:27:48.251605"
+    },
+    {
+      "test": "Invalid Login",
+      "success": true,
+      "details": "Status: 401, Response: {\n  \"detail\": \"E-posta veya \\u015fifre hatal\\u0131\"\n}...",
+      "timestamp": "2026-01-23T16:27:48.286959"
+    },
+    {
+      "test": "Duplicate Registration",
+      "success": false,
+      "details": "Status: 200, Error: {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjBkNGQyMS00NTEwLTQ1MTAtYjFhMy03ZjRlM2ExZTc2MzQiLCJlbWFpbCI6InRlc3QyQGV4YW1wbGUuY29tIiwiZXhwIjoxNzY5MjcyMDY4fQ.RpphoWq4zV_l8ULJjGK4nB6LLMEcgyv0SEOgIVEzROg', 'token_type': 'bearer', 'user': {'id': 'b60d4d21-4510-4510-b1a3-7f4e3a1e7634', 'name': 'Duplicate User', 'email': 'test2@example.com', 'age': None, 'parent_name': None, 'created_at': '2026-01-23T16:27:48.319956+00:00'}}",
+      "timestamp": "2026-01-23T16:27:48.663708"
+    },
+    {
+      "test": "Registration (New Email)",
+      "success": false,
+      "details": "Status: 400, Error: {'detail': 'Bu e-posta adresi zaten kayıtlı'}",
+      "timestamp": "2026-01-23T16:27:48.700529"
+    },
+    {
+      "test": "Non-existent Exercise",
+      "success": true,
+      "details": "Status: 404, Response: {\n  \"detail\": \"Egzersiz bulunamad\\u0131\"\n}...",
+      "timestamp": "2026-01-23T16:27:48.739230"
+    }
+  ]
+}
