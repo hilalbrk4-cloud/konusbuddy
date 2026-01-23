@@ -324,8 +324,9 @@ const ExercisePage = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-8">
         <div className="max-w-lg w-full">
-          {/* Word Image */}
+          {/* Word Image - key forces re-render on exercise change */}
           <div 
+            key={currentExercise?.id}
             className="bg-white rounded-3xl shadow-lg p-4 mb-8 border-8 animate-bounce-in"
             style={{ borderColor: getDifficultyColor() }}
           >
