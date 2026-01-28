@@ -121,6 +121,11 @@ class PronunciationCheckResponse(BaseModel):
     feedback: Optional[str] = None
     similarity_percentage: float
     used_ai: bool = False
+
+class UserStats(BaseModel):
+    total_attempts: int
+    correct_attempts: int
+    accuracy_percentage: float
     easy_completed: int
     medium_completed: int
     hard_completed: int
@@ -128,7 +133,154 @@ class PronunciationCheckResponse(BaseModel):
     streak_days: int
     last_activity: Optional[str] = None
 
-# ============ HELPER FUNCTIONS ============
+# ============ PHONETIC ANALYSIS FUNCTIONS ============
+
+def levenshtein_distance(s1: str, s2: str) -> int:
+    """Calculate the Levenshtein distance between two strings."""
+    if len(s1) < len(s2):
+        return levenshtein_distance(s2, s1)
+    if len(s2) == 0:
+        return len(s1)
+    
+    previous_row = range(len(s2) + 1)
+    for i, c1 in enumerate(s1):
+        current_row = [i + 1]
+        for j, c2 in enumerate(s2):
+            insertions = previous_row[j + 1] + 1
+            deletions = current_row[j] + 1
+            substitutions = previous_row[j] + (c1 != c2)
+            current_row.append(min(insertions, deletions, substitutions))
+        previous_row = current_row
+    return previous_row[-1]
+
+def calculate_similarity(target: str, spoken: str) -> float:
+    """Calculate similarity percentage between two strings."""
+    target_clean = target.lower().strip()
+    spoken_clean = spoken.lower().strip()
+    
+    if target_clean == spoken_clean:
+        return 100.0
+    
+    max_len = max(len(target_clean), len(spoken_clean))
+    if max_len == 0:
+        return 0.0
+    
+    distance = levenshtein_distance(target_clean, spoken_clean)
+    similarity = (1 - distance / max_len) * 100
+    return max(0.0, similarity)
+
+def check_first_letter(target: str, spoken: str) -> bool:
+    """Check if first letters match (important for speech therapy)."""
+    target_clean = target.lower().strip()
+    spoken_clean = spoken.lower().strip()
+    
+    if not target_clean or not spoken_clean:
+        return False
+    
+    return target_clean[0] == spoken_clean[0]
+
+def phonetic_analysis(target_word: str, spoken_word: str) -> tuple:
+    """
+    Perform phonetic analysis.
+    Returns: (result, similarity_percentage, feedback)
+    result: 'dogru', 'yakin', 'yanlis'
+    """
+    target = target_word.lower().strip()
+    spoken = spoken_word.lower().strip()
+    
+    # Exact match
+    if target == spoken:
+        return ('dogru', 100.0, None)
+    
+    similarity = calculate_similarity(target, spoken)
+    first_letter_match = check_first_letter(target, spoken)
+    
+    # Rule: Different first letter = NEVER correct (e.g., kedi -> tedi)
+    if not first_letter_match:
+        if similarity >= 75:
+            return ('yakin', similarity, f"İlk ses farklı. '{target[0].upper()}' sesi ile başlamalı.")
+        else:
+            return ('yanlis', similarity, f"'{target}' kelimesini tekrar deneyelim.")
+    
+    # Similarity thresholds
+    if similarity >= 92:
+        return ('dogru', similarity, None)
+    elif similarity >= 75:
+        return ('yakin', similarity, "Çok yaklaştın! Bir kez daha dene.")
+    else:
+        return ('yanlis', similarity, f"'{target}' kelimesini tekrar söyleyelim.")
+
+async def call_openrouter_ai(target_word: str, spoken_word: str) -> Optional[dict]:
+    """
+    Call OpenRouter AI for pronunciation evaluation.
+    Only called when phonetic result is 'yakin' or after 2 consecutive failures.
+    Returns: {'result': 'dogru'|'yakin'|'yanlis', 'feedback': str or None}
+    """
+    if not OPENROUTER_API_KEY:
+        logger.warning("OpenRouter API key not configured")
+        return None
+    
+    prompt = f"""Sen bir çocuk dil ve konuşma terapisti yardımcısısın.
+
+Hedef kelime: "{target_word}"
+Çocuğun söylediği: "{spoken_word}"
+
+Bu iki kelimeyi karşılaştır ve telaffuz yakınlığını değerlendir.
+
+SADECE şu formatta yanıt ver:
+SONUC: [dogru veya yakin veya yanlis]
+GERIBIDRIM: [Eğer sonuç yakin veya yanlis ise, çocuğa yönelik 1 cümlelik (max 15 kelime) cesaretlendirici ve düzeltici geri bildirim yaz. Eğer dogru ise boş bırak.]
+
+Kurallar:
+- İlk harfler farklıysa ASLA "dogru" deme
+- Çok küçük telaffuz farklılıkları kabul edilebilir
+- Çocuk dostu, pozitif bir dil kullan"""
+
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            response = await client.post(
+                f"{OPENROUTER_BASE_URL}/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://konusbuddy.app"
+                },
+                json={
+                    "model": "openai/gpt-4o-mini",
+                    "messages": [{"role": "user", "content": prompt}],
+                    "max_tokens": 100,
+                    "temperature": 0.3
+                }
+            )
+            
+            if response.status_code != 200:
+                logger.error(f"OpenRouter API error: {response.status_code}")
+                return None
+            
+            data = response.json()
+            ai_response = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+            
+            # Parse AI response
+            result = "yakin"  # default
+            feedback = None
+            
+            if "SONUC:" in ai_response:
+                result_match = re.search(r'SONUC:\s*(dogru|yakin|yanlis)', ai_response.lower())
+                if result_match:
+                    result = result_match.group(1)
+            
+            if "GERIBIDRIM:" in ai_response.upper():
+                feedback_match = re.search(r'GERIBIDRIM:\s*(.+?)(?:\n|$)', ai_response, re.IGNORECASE)
+                if feedback_match:
+                    feedback_text = feedback_match.group(1).strip()
+                    if feedback_text and feedback_text.lower() not in ['', 'boş', '-', 'yok']:
+                        feedback = feedback_text
+            
+            return {'result': result, 'feedback': feedback}
+            
+    except Exception as e:
+        logger.error(f"OpenRouter API call failed: {e}")
+        return None
 
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
