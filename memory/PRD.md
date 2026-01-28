@@ -92,3 +92,24 @@
 ### Güvenlik
 - OpenRouter API key sadece backend'de
 - Frontend hiçbir zaman API key görmez
+
+---
+## Update: Jan 28, 2025 - AI Sohbet Asistanı
+
+### Yeni Özellik: KonuşBuddy Sohbet Asistanı
+- ✅ Dashboard'da sol alt köşede mor sohbet butonu
+- ✅ OpenRouter API ile GPT-4o-mini entegrasyonu
+- ✅ Çocuk dostu, Türkçe sohbet
+- ✅ Konuşma pratiği için sorular sorar
+- ✅ Sohbet geçmişi MongoDB'de saklanır
+- ✅ Mesajları sesli dinleme özelliği (TTS)
+- ✅ Sohbet temizleme butonu
+
+### API Endpoints
+- `POST /api/chat` - Mesaj gönder
+- `GET /api/chat/history` - Sohbet geçmişi
+- `DELETE /api/chat/history` - Geçmişi temizle
+
+### Güvenlik
+- OpenRouter API key sadece backend'de
+- Frontend hiçbir zaman key'e erişmez
