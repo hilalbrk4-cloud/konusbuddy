@@ -242,6 +242,9 @@ const Dashboard = () => {
             <Mic className="w-8 h-8 text-white" />
           </Link>
         </div>
+
+        {/* AI Chat Assistant */}
+        <ChatAssistant />
       </main>
     </div>
   );
