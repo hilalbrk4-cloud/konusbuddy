@@ -931,28 +931,13 @@ async def get_ai_recommendations(user_name: str, progress_data: dict) -> dict:
         return None
     
     # Prepare data summary for AI
-    data_summary = f"""
-Çocuğun Adı: {user_name}
-
-İstatistikler:
-- Toplam Deneme: {progress_data.get('total_attempts', 0)}
-- Doğru: {progress_data.get('correct_attempts', 0)}
-- Başarı Oranı: %{progress_data.get('accuracy', 0):.1f}
-
-Zorlandığı Kelimeler (en çok hata yapılan):
-{progress_data.get('struggling_words_text', 'Henüz veri yok')}
-
-Kategori Performansı:
-{progress_data.get('category_performance_text', 'Henüz veri yok')}
-
-Zorluk Seviyesi Performansı:
-- Kolay: {progress_data.get('easy_success', 0)}% başarı
-- Orta: {progress_data.get('medium_success', 0)}% başarı
-- Zor: {progress_data.get('hard_success', 0)}% başarı
-"""
+    data_summary = f"""Çocuk: {user_name}
+Deneme: {progress_data.get('total_attempts', 0)}, Başarı: %{progress_data.get('accuracy', 0):.0f}
+Zorlandığı: {progress_data.get('struggling_words_text', 'Yok')}
+Seviye: Kolay %{progress_data.get('easy_success', 0):.0f}, Orta %{progress_data.get('medium_success', 0):.0f}"""
     
     try:
-        async with httpx.AsyncClient(timeout=20.0) as client:
+        async with httpx.AsyncClient(timeout=10.0) as client:
             response = await client.post(
                 f"{OPENROUTER_BASE_URL}/chat/completions",
                 headers={
@@ -966,8 +951,8 @@ Zorluk Seviyesi Performansı:
                         {"role": "system", "content": RECOMMENDATION_SYSTEM_PROMPT},
                         {"role": "user", "content": data_summary}
                     ],
-                    "max_tokens": 500,
-                    "temperature": 0.7
+                    "max_tokens": 400,
+                    "temperature": 0.5
                 }
             )
             
