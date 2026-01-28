@@ -233,6 +233,11 @@ const Dashboard = () => {
           </div>
         </div>
 
+        {/* AI Recommendations */}
+        <div className="mt-8">
+          <RecommendationCard />
+        </div>
+
         {/* Quick Start Button */}
         <div className="fixed bottom-8 right-8">
           <Link
