@@ -32,8 +32,15 @@ ACCESS_TOKEN_EXPIRE_HOURS = 24
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
 
+# OpenRouter API (only used when needed)
+OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY', '')
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
+
+# Track failed attempts per user per word (for AI triggering)
+failed_attempts_cache: Dict[str, Dict[str, int]] = {}
 
 # ============ MODELS ============
 
