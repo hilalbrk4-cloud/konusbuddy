@@ -895,6 +895,303 @@ async def clear_chat_history(current_user: dict = Depends(get_current_user)):
     
     return {"message": "Sohbet geçmişi temizlendi"}
 
+# ============ AI RECOMMENDATIONS ============
+
+RECOMMENDATION_SYSTEM_PROMPT = """Sen bir çocuk dil ve konuşma terapisti yardımcısısın. Çocuğun egzersiz verilerini analiz edip kişiselleştirilmiş öneriler sunacaksın.
+
+GÖREV: Verilen ilerleme verilerini analiz et ve çocuğa özel egzersiz önerileri sun.
+
+ÇIKTI FORMATI (JSON):
+{
+  "analysis": "Kısa analiz (2-3 cümle, çocuğun durumunu özetle)",
+  "recommendations": [
+    {
+      "title": "Öneri başlığı",
+      "description": "Kısa açıklama",
+      "words": ["kelime1", "kelime2", "kelime3"],
+      "category": "kategori_id",
+      "difficulty": "easy/medium/hard",
+      "reason": "Neden bu önerildi (1 cümle)"
+    }
+  ],
+  "encouragement": "Çocuğa cesaretlendirici mesaj (1 cümle)"
+}
+
+KURALLAR:
+- Zorlandığı kelimelere odaklan
+- Benzer sesler içeren kelimeleri grupla
+- Başarılı olduğu kategorilerde daha zor kelimeler öner
+- Her zaman pozitif ve cesaretlendirici ol
+- Türkçe yaz
+- JSON formatında yanıt ver"""
+
+async def get_ai_recommendations(user_name: str, progress_data: dict) -> dict:
+    """Get AI-powered exercise recommendations based on user progress."""
+    if not OPENROUTER_API_KEY:
+        return None
+    
+    # Prepare data summary for AI
+    data_summary = f"""
+Çocuğun Adı: {user_name}
+
+İstatistikler:
+- Toplam Deneme: {progress_data.get('total_attempts', 0)}
+- Doğru: {progress_data.get('correct_attempts', 0)}
+- Başarı Oranı: %{progress_data.get('accuracy', 0):.1f}
+
+Zorlandığı Kelimeler (en çok hata yapılan):
+{progress_data.get('struggling_words_text', 'Henüz veri yok')}
+
+Kategori Performansı:
+{progress_data.get('category_performance_text', 'Henüz veri yok')}
+
+Zorluk Seviyesi Performansı:
+- Kolay: {progress_data.get('easy_success', 0)}% başarı
+- Orta: {progress_data.get('medium_success', 0)}% başarı
+- Zor: {progress_data.get('hard_success', 0)}% başarı
+"""
+    
+    try:
+        async with httpx.AsyncClient(timeout=20.0) as client:
+            response = await client.post(
+                f"{OPENROUTER_BASE_URL}/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://konusbuddy.app"
+                },
+                json={
+                    "model": "openai/gpt-4o-mini",
+                    "messages": [
+                        {"role": "system", "content": RECOMMENDATION_SYSTEM_PROMPT},
+                        {"role": "user", "content": data_summary}
+                    ],
+                    "max_tokens": 500,
+                    "temperature": 0.7
+                }
+            )
+            
+            if response.status_code != 200:
+                logger.error(f"OpenRouter API error: {response.status_code}")
+                return None
+            
+            data = response.json()
+            ai_response = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+            
+            # Parse JSON response
+            import json
+            try:
+                # Clean up response - remove markdown code blocks if present
+                clean_response = ai_response.strip()
+                if clean_response.startswith("```"):
+                    clean_response = clean_response.split("```")[1]
+                    if clean_response.startswith("json"):
+                        clean_response = clean_response[4:]
+                clean_response = clean_response.strip()
+                
+                return json.loads(clean_response)
+            except json.JSONDecodeError:
+                logger.error(f"Failed to parse AI response: {ai_response}")
+                return None
+                
+    except Exception as e:
+        logger.error(f"Recommendation API error: {e}")
+        return None
+
+@api_router.get("/recommendations", response_model=RecommendationsResponse)
+async def get_recommendations(current_user: dict = Depends(get_current_user)):
+    """Get AI-powered personalized exercise recommendations."""
+    user_id = current_user["id"]
+    user_name = current_user.get("name", "Arkadaş")
+    
+    # Get all progress for user
+    all_progress = await db.progress.find(
+        {"user_id": user_id},
+        {"_id": 0}
+    ).to_list(10000)
+    
+    if len(all_progress) < 3:
+        # Not enough data for recommendations
+        return RecommendationsResponse(
+            ai_analysis="Henüz yeterli egzersiz yapmadın. Birkaç egzersiz yaptıktan sonra sana özel öneriler sunacağım!",
+            struggling_words=[],
+            recommendations=[
+                ExerciseRecommendation(
+                    title="Başlangıç Egzersizi",
+                    description="Kolay kelimelerle başla!",
+                    words=["Kedi", "Köpek", "Top", "Elma", "Ev"],
+                    category="mixed",
+                    difficulty="easy",
+                    reason="Yeni başlayanlar için temel kelimeler"
+                )
+            ],
+            encouragement="Hadi birlikte öğrenmeye başlayalım! 🌟"
+        )
+    
+    # Analyze progress data
+    total_attempts = len(all_progress)
+    correct_attempts = len([p for p in all_progress if p.get("is_correct")])
+    accuracy = (correct_attempts / total_attempts * 100) if total_attempts > 0 else 0
+    
+    # Find struggling words (words with multiple failures)
+    word_stats = {}
+    for p in all_progress:
+        word_id = p.get("word_id")
+        word = p.get("word", "")
+        if word_id not in word_stats:
+            word_stats[word_id] = {
+                "word": word,
+                "word_id": word_id,
+                "attempts": 0,
+                "correct": 0,
+                "category": p.get("category", ""),
+                "difficulty": p.get("difficulty", "")
+            }
+        word_stats[word_id]["attempts"] += 1
+        if p.get("is_correct"):
+            word_stats[word_id]["correct"] += 1
+    
+    # Calculate success rate and find struggling words
+    struggling_words = []
+    for word_id, stats in word_stats.items():
+        if stats["attempts"] >= 2:  # At least 2 attempts
+            success_rate = (stats["correct"] / stats["attempts"]) * 100
+            if success_rate < 70:  # Less than 70% success
+                struggling_words.append(StruggleWord(
+                    word=stats["word"],
+                    word_id=stats["word_id"],
+                    attempts=stats["attempts"],
+                    success_rate=round(success_rate, 1),
+                    category=stats["category"],
+                    difficulty=stats["difficulty"]
+                ))
+    
+    # Sort by success rate (lowest first)
+    struggling_words.sort(key=lambda x: x.success_rate)
+    struggling_words = struggling_words[:5]  # Top 5 struggling words
+    
+    # Category performance
+    categories = ["animals", "colors", "objects", "foods", "body_parts", "phrases"]
+    category_names = {
+        "animals": "Hayvanlar", "colors": "Renkler", "objects": "Objeler",
+        "foods": "Yiyecekler", "body_parts": "Vücut", "phrases": "Cümleler"
+    }
+    category_performance = {}
+    for cat in categories:
+        cat_progress = [p for p in all_progress if p.get("category") == cat]
+        if cat_progress:
+            cat_correct = len([p for p in cat_progress if p.get("is_correct")])
+            cat_total = len(cat_progress)
+            category_performance[cat] = round((cat_correct / cat_total) * 100, 1)
+    
+    # Difficulty performance
+    easy_progress = [p for p in all_progress if p.get("difficulty") == "easy"]
+    medium_progress = [p for p in all_progress if p.get("difficulty") == "medium"]
+    hard_progress = [p for p in all_progress if p.get("difficulty") == "hard"]
+    
+    easy_success = round((len([p for p in easy_progress if p.get("is_correct")]) / len(easy_progress) * 100), 1) if easy_progress else 0
+    medium_success = round((len([p for p in medium_progress if p.get("is_correct")]) / len(medium_progress) * 100), 1) if medium_progress else 0
+    hard_success = round((len([p for p in hard_progress if p.get("is_correct")]) / len(hard_progress) * 100), 1) if hard_progress else 0
+    
+    # Prepare text summaries for AI
+    struggling_words_text = "\n".join([
+        f"- {sw.word} ({sw.category}): {sw.attempts} deneme, %{sw.success_rate} başarı"
+        for sw in struggling_words
+    ]) if struggling_words else "Zorlanılan kelime yok, harika gidiyorsun!"
+    
+    category_performance_text = "\n".join([
+        f"- {category_names.get(cat, cat)}: %{perf} başarı"
+        for cat, perf in category_performance.items()
+    ]) if category_performance else "Henüz kategori verisi yok"
+    
+    # Get AI recommendations
+    progress_data = {
+        "total_attempts": total_attempts,
+        "correct_attempts": correct_attempts,
+        "accuracy": accuracy,
+        "struggling_words_text": struggling_words_text,
+        "category_performance_text": category_performance_text,
+        "easy_success": easy_success,
+        "medium_success": medium_success,
+        "hard_success": hard_success
+    }
+    
+    ai_result = await get_ai_recommendations(user_name, progress_data)
+    
+    # Build response
+    if ai_result:
+        recommendations = []
+        for rec in ai_result.get("recommendations", [])[:3]:
+            recommendations.append(ExerciseRecommendation(
+                title=rec.get("title", "Egzersiz"),
+                description=rec.get("description", ""),
+                words=rec.get("words", [])[:5],
+                category=rec.get("category", "mixed"),
+                difficulty=rec.get("difficulty", "easy"),
+                reason=rec.get("reason", "")
+            ))
+        
+        return RecommendationsResponse(
+            ai_analysis=ai_result.get("analysis", "Verileriniz analiz edildi."),
+            struggling_words=struggling_words,
+            recommendations=recommendations if recommendations else [
+                ExerciseRecommendation(
+                    title="Pratik Yap",
+                    description="Egzersizlere devam et!",
+                    words=["Kedi", "Köpek", "Elma"],
+                    category="mixed",
+                    difficulty="easy",
+                    reason="Pratik yapmak önemli"
+                )
+            ],
+            encouragement=ai_result.get("encouragement", "Harika gidiyorsun! 🌟")
+        )
+    else:
+        # Fallback without AI
+        default_recommendations = []
+        
+        # Recommend based on struggling categories
+        weak_categories = [cat for cat, perf in category_performance.items() if perf < 70]
+        if weak_categories:
+            for cat in weak_categories[:2]:
+                cat_words = [e["word"] for e in EXERCISES if e["category"] == cat and e["difficulty"] == "easy"][:5]
+                default_recommendations.append(ExerciseRecommendation(
+                    title=f"{category_names.get(cat, cat)} Pratiği",
+                    description=f"{category_names.get(cat, cat)} kategorisinde pratik yap",
+                    words=cat_words,
+                    category=cat,
+                    difficulty="easy",
+                    reason=f"Bu kategoride daha fazla pratik gerekiyor"
+                ))
+        
+        # Add struggling words practice
+        if struggling_words:
+            default_recommendations.append(ExerciseRecommendation(
+                title="Zorlandığın Kelimeler",
+                description="Bu kelimeleri tekrar pratik et",
+                words=[sw.word for sw in struggling_words[:5]],
+                category="mixed",
+                difficulty="easy",
+                reason="Bu kelimelerde daha fazla pratik gerekiyor"
+            ))
+        
+        if not default_recommendations:
+            default_recommendations.append(ExerciseRecommendation(
+                title="Devam Et!",
+                description="Harika gidiyorsun, egzersizlere devam et",
+                words=["Kedi", "Köpek", "Elma", "Top", "Ev"],
+                category="mixed",
+                difficulty="easy",
+                reason="Pratik yapmaya devam et"
+            ))
+        
+        return RecommendationsResponse(
+            ai_analysis=f"Toplam {total_attempts} deneme yaptın, %{accuracy:.1f} başarı oranın var.",
+            struggling_words=struggling_words,
+            recommendations=default_recommendations,
+            encouragement="Harika gidiyorsun! Pratik yapmaya devam et! 🌟"
+        )
+
 # ============ HEALTH CHECK ============
 
 @api_router.get("/")
