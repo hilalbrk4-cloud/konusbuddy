@@ -140,6 +140,30 @@ class ChatHistoryResponse(BaseModel):
     conversation_id: str
     messages: List[ChatMessage]
 
+# ============ RECOMMENDATION MODELS ============
+
+class StruggleWord(BaseModel):
+    word: str
+    word_id: str
+    attempts: int
+    success_rate: float
+    category: str
+    difficulty: str
+
+class ExerciseRecommendation(BaseModel):
+    title: str
+    description: str
+    words: List[str]
+    category: str
+    difficulty: str
+    reason: str
+
+class RecommendationsResponse(BaseModel):
+    ai_analysis: str
+    struggling_words: List[StruggleWord]
+    recommendations: List[ExerciseRecommendation]
+    encouragement: str
+
 class UserStats(BaseModel):
     total_attempts: int
     correct_attempts: int
