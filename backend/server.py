@@ -709,6 +709,168 @@ async def get_user_stats(current_user: dict = Depends(get_current_user)):
         last_activity=last_activity
     )
 
+# ============ AI CHAT ASSISTANT ============
+
+CHAT_SYSTEM_PROMPT = """Sen "KonuşBuddy" adında, 4-10 yaş arası çocuklarla Türkçe konuşma pratiği yapan eğlenceli ve sevecen bir yapay zeka asistanısın.
+
+GÖREVLER:
+- Çocuklarla basit, eğlenceli sohbetler yap
+- Konuşma pratiği için sorular sor (örn: "En sevdiğin hayvan hangisi?", "Bugün ne yedin?")
+- Çocuğun cevaplarını cesaretlendir ve olumlu geri bildirim ver
+- Bazen basit kelime oyunları öner
+- Telaffuzu zor kelimeleri heceleyerek söyle
+
+KURALLAR:
+- Her zaman Türkçe konuş
+- Cümlelerini KISA ve BASİT tut (maksimum 2-3 cümle)
+- Çocuk dostu, neşeli bir dil kullan
+- Emojiler kullanabilirsin ama abartma
+- Asla olumsuz veya korkutucu şeyler söyleme
+- Kişisel bilgi (adres, telefon vb.) sorma
+
+ÖNEMLİ: Her mesajında çocuğu konuşmaya teşvik eden bir soru veya aktivite öner."""
+
+async def chat_with_ai(user_message: str, chat_history: List[dict], user_name: str) -> str:
+    """Chat with OpenRouter AI."""
+    if not OPENROUTER_API_KEY:
+        return "Merhaba! Şu an sohbet özelliği aktif değil. Ama egzersizlere devam edebilirsin! 🎯"
+    
+    # Build messages for API
+    messages = [{"role": "system", "content": CHAT_SYSTEM_PROMPT + f"\n\nÇocuğun adı: {user_name}"}]
+    
+    # Add last 10 messages from history for context
+    for msg in chat_history[-10:]:
+        messages.append({"role": msg["role"], "content": msg["content"]})
+    
+    # Add current user message
+    messages.append({"role": "user", "content": user_message})
+    
+    try:
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            response = await client.post(
+                f"{OPENROUTER_BASE_URL}/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://konusbuddy.app"
+                },
+                json={
+                    "model": "openai/gpt-4o-mini",
+                    "messages": messages,
+                    "max_tokens": 150,
+                    "temperature": 0.8
+                }
+            )
+            
+            if response.status_code != 200:
+                logger.error(f"OpenRouter API error: {response.status_code} - {response.text}")
+                return "Hmm, bir şeyler ters gitti. Tekrar dener misin? 🤔"
+            
+            data = response.json()
+            ai_response = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+            
+            if not ai_response:
+                return "Hmm, düşünüyorum... Biraz sonra tekrar dener misin? 🤔"
+            
+            return ai_response.strip()
+            
+    except httpx.TimeoutException:
+        logger.error("OpenRouter API timeout")
+        return "Biraz yavaşladım, tekrar dener misin? ⏳"
+    except Exception as e:
+        logger.error(f"Chat API error: {e}")
+        return "Bir hata oluştu. Tekrar dener misin? 🔄"
+
+@api_router.post("/chat", response_model=ChatResponse)
+async def send_chat_message(
+    request: ChatRequest,
+    current_user: dict = Depends(get_current_user)
+):
+    """Send a message to the AI chat assistant."""
+    user_id = current_user["id"]
+    user_name = current_user.get("name", "Arkadaş")
+    
+    # Get or create conversation
+    conversation = await db.conversations.find_one(
+        {"user_id": user_id, "active": True},
+        {"_id": 0}
+    )
+    
+    if not conversation:
+        conversation_id = str(uuid.uuid4())
+        conversation = {
+            "id": conversation_id,
+            "user_id": user_id,
+            "messages": [],
+            "active": True,
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db.conversations.insert_one(conversation)
+    else:
+        conversation_id = conversation["id"]
+    
+    # Get chat history
+    chat_history = conversation.get("messages", [])
+    
+    # Get AI response
+    ai_response = await chat_with_ai(request.message, chat_history, user_name)
+    
+    # Save messages to conversation
+    timestamp = datetime.now(timezone.utc).isoformat()
+    
+    user_msg = {"role": "user", "content": request.message, "timestamp": timestamp}
+    assistant_msg = {"role": "assistant", "content": ai_response, "timestamp": timestamp}
+    
+    await db.conversations.update_one(
+        {"id": conversation_id},
+        {
+            "$push": {"messages": {"$each": [user_msg, assistant_msg]}},
+            "$set": {"updated_at": timestamp}
+        }
+    )
+    
+    return ChatResponse(response=ai_response, conversation_id=conversation_id)
+
+@api_router.get("/chat/history", response_model=ChatHistoryResponse)
+async def get_chat_history(current_user: dict = Depends(get_current_user)):
+    """Get chat history for the current user."""
+    user_id = current_user["id"]
+    
+    conversation = await db.conversations.find_one(
+        {"user_id": user_id, "active": True},
+        {"_id": 0}
+    )
+    
+    if not conversation:
+        return ChatHistoryResponse(conversation_id="", messages=[])
+    
+    messages = [
+        ChatMessage(
+            role=msg["role"],
+            content=msg["content"],
+            timestamp=msg.get("timestamp")
+        )
+        for msg in conversation.get("messages", [])
+    ]
+    
+    return ChatHistoryResponse(
+        conversation_id=conversation["id"],
+        messages=messages
+    )
+
+@api_router.delete("/chat/history")
+async def clear_chat_history(current_user: dict = Depends(get_current_user)):
+    """Clear chat history and start a new conversation."""
+    user_id = current_user["id"]
+    
+    # Mark current conversation as inactive
+    await db.conversations.update_many(
+        {"user_id": user_id, "active": True},
+        {"$set": {"active": False}}
+    )
+    
+    return {"message": "Sohbet geçmişi temizlendi"}
+
 # ============ HEALTH CHECK ============
 
 @api_router.get("/")
