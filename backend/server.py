@@ -122,6 +122,24 @@ class PronunciationCheckResponse(BaseModel):
     similarity_percentage: float
     used_ai: bool = False
 
+# ============ CHAT MODELS ============
+
+class ChatMessage(BaseModel):
+    role: str  # user, assistant
+    content: str
+    timestamp: Optional[str] = None
+
+class ChatRequest(BaseModel):
+    message: str
+
+class ChatResponse(BaseModel):
+    response: str
+    conversation_id: str
+
+class ChatHistoryResponse(BaseModel):
+    conversation_id: str
+    messages: List[ChatMessage]
+
 class UserStats(BaseModel):
     total_attempts: int
     correct_attempts: int
