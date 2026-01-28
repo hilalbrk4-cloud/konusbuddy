@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Progress } from "../components/ui/progress";
 import ChatAssistant from "../components/ChatAssistant";
+import RecommendationCard from "../components/RecommendationCard";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
