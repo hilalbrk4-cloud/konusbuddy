@@ -113,3 +113,22 @@
 ### Güvenlik
 - OpenRouter API key sadece backend'de
 - Frontend hiçbir zaman key'e erişmez
+
+---
+## Update: Jan 28, 2025 - Kişiselleştirilmiş AI Önerileri
+
+### Yeni Özellik: AI Tabanlı Egzersiz Önerileri
+- ✅ Kullanıcının ilerleme verilerini analiz eder
+- ✅ Zorlandığı kelimeleri tespit eder
+- ✅ Kategori ve zorluk seviyesi performansını değerlendirir
+- ✅ Kişiselleştirilmiş egzersiz önerileri sunar
+- ✅ Cesaretlendirici mesajlar ile motivasyon sağlar
+
+### API Endpoint
+`GET /api/recommendations` - AI tabanlı kişisel öneriler
+
+### Gösterilen Bilgiler
+- AI analizi (kullanıcının genel durumu)
+- Pratik gereken kelimeler (başarı oranı düşük olanlar)
+- Önerilen egzersizler (kategori ve zorluk bazlı)
+- Cesaretlendirici mesaj
