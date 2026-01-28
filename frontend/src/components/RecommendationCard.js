@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -6,7 +6,6 @@ import {
   Sparkles, AlertCircle, ChevronRight, Target, 
   TrendingUp, RefreshCw, Loader2, BookOpen
 } from "lucide-react";
-import { Progress } from "./ui/progress";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -16,13 +15,12 @@ const RecommendationCard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchRecommendations = async () => {
+  const fetchRecommendations = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${API}/recommendations`, {
-        headers: getAuthHeaders()
-      });
+      const headers = getAuthHeaders();
+      const response = await axios.get(`${API}/recommendations`, { headers });
       setRecommendations(response.data);
     } catch (err) {
       console.error("Error fetching recommendations:", err);
@@ -30,11 +28,11 @@ const RecommendationCard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [getAuthHeaders]);
 
   useEffect(() => {
     fetchRecommendations();
-  }, []);
+  }, [fetchRecommendations]);
 
   if (loading) {
     return (
