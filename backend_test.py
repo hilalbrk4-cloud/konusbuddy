@@ -181,6 +181,119 @@ class TurkishSpeechTherapyAPITester:
         # Test get difficulties
         self.run_test("Get Difficulties", "GET", "difficulties", 200)
 
+    def test_pronunciation_check_endpoint(self):
+        """Test the new pronunciation check functionality"""
+        print("\n🎤 Testing Pronunciation Check Endpoint...")
+        
+        if not self.token:
+            print("    ❌ No auth token - skipping pronunciation tests")
+            return
+        
+        # Test 1: Exact match should return 'dogru'
+        exact_match_data = {
+            "target_word": "kedi",
+            "spoken_word": "kedi",
+            "word_id": "1"
+        }
+        success, response = self.run_test(
+            "Pronunciation Check - Exact Match", 
+            "POST", 
+            "pronunciation-check", 
+            200, 
+            exact_match_data
+        )
+        if success and response.get('result') == 'dogru':
+            self.log_test("Exact match returns 'dogru'", True, f"Result: {response.get('result')}")
+        else:
+            self.log_test("Exact match returns 'dogru'", False, f"Expected 'dogru', got: {response.get('result')}")
+        
+        # Test 2: Different first letter should NEVER return 'dogru' (kedi->tedi)
+        different_first_letter_data = {
+            "target_word": "kedi",
+            "spoken_word": "tedi",
+            "word_id": "1"
+        }
+        success, response = self.run_test(
+            "Pronunciation Check - Different First Letter", 
+            "POST", 
+            "pronunciation-check", 
+            200, 
+            different_first_letter_data
+        )
+        if success and response.get('result') != 'dogru':
+            self.log_test("Different first letter NEVER returns 'dogru'", True, f"Result: {response.get('result')}")
+        else:
+            self.log_test("Different first letter NEVER returns 'dogru'", False, f"Expected NOT 'dogru', got: {response.get('result')}")
+        
+        # Test 3: Close match should return 'yakin' with feedback
+        close_match_data = {
+            "target_word": "kedi",
+            "spoken_word": "keti",
+            "word_id": "1"
+        }
+        success, response = self.run_test(
+            "Pronunciation Check - Close Match", 
+            "POST", 
+            "pronunciation-check", 
+            200, 
+            close_match_data
+        )
+        if success and response.get('result') == 'yakin' and response.get('feedback'):
+            self.log_test("Close match returns 'yakin' with feedback", True, f"Result: {response.get('result')}, Feedback: {response.get('feedback')}")
+        else:
+            self.log_test("Close match returns 'yakin' with feedback", False, f"Expected 'yakin' with feedback, got: {response.get('result')}, feedback: {response.get('feedback')}")
+        
+        # Test 4: Very different should return 'yanlis'
+        very_different_data = {
+            "target_word": "kedi",
+            "spoken_word": "araba",
+            "word_id": "1"
+        }
+        success, response = self.run_test(
+            "Pronunciation Check - Very Different", 
+            "POST", 
+            "pronunciation-check", 
+            200, 
+            very_different_data
+        )
+        if success and response.get('result') == 'yanlis':
+            self.log_test("Very different returns 'yanlis'", True, f"Result: {response.get('result')}")
+        else:
+            self.log_test("Very different returns 'yanlis'", False, f"Expected 'yanlis', got: {response.get('result')}")
+        
+        # Test 5: Case insensitive matching
+        case_test_data = {
+            "target_word": "KEDI",
+            "spoken_word": "kedi",
+            "word_id": "1"
+        }
+        success, response = self.run_test(
+            "Pronunciation Check - Case Insensitive", 
+            "POST", 
+            "pronunciation-check", 
+            200, 
+            case_test_data
+        )
+        if success and response.get('result') == 'dogru':
+            self.log_test("Case insensitive matching works", True, f"Result: {response.get('result')}")
+        else:
+            self.log_test("Case insensitive matching works", False, f"Expected 'dogru', got: {response.get('result')}")
+        
+        # Test 6: Empty/invalid input handling
+        invalid_data = {
+            "target_word": "",
+            "spoken_word": "",
+            "word_id": "1"
+        }
+        success, response = self.run_test(
+            "Pronunciation Check - Empty Input", 
+            "POST", 
+            "pronunciation-check", 
+            200, 
+            invalid_data
+        )
+        # Should handle gracefully, not crash
+
     def test_progress_endpoints(self):
         """Test progress tracking endpoints"""
         print("\n📊 Testing Progress Endpoints...")
