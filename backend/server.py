@@ -510,6 +510,83 @@ async def get_difficulties():
 
 # ============ PROGRESS ROUTES ============
 
+# ============ PRONUNCIATION CHECK ROUTE ============
+
+@api_router.post("/pronunciation-check", response_model=PronunciationCheckResponse)
+async def check_pronunciation(
+    request: PronunciationCheckRequest,
+    current_user: dict = Depends(get_current_user)
+):
+    """
+    Check pronunciation with phonetic analysis + optional AI support.
+    Flow:
+    1. Exact match -> dogru
+    2. Phonetic analysis (free)
+    3. If result is 'yakin' OR 2 consecutive failures -> call AI (rare)
+    """
+    target = request.target_word
+    spoken = request.spoken_word
+    user_id = current_user["id"]
+    word_id = request.word_id
+    
+    # Cache key for tracking failures
+    cache_key = f"{user_id}_{word_id}"
+    
+    # Step 1: Exact match check
+    if target.lower().strip() == spoken.lower().strip():
+        # Reset failure count on success
+        if cache_key in failed_attempts_cache:
+            del failed_attempts_cache[cache_key]
+        return PronunciationCheckResponse(
+            result="dogru",
+            feedback=None,
+            similarity_percentage=100.0,
+            used_ai=False
+        )
+    
+    # Step 2: Phonetic analysis (free)
+    phonetic_result, similarity, phonetic_feedback = phonetic_analysis(target, spoken)
+    
+    # Determine if AI should be called
+    should_call_ai = False
+    consecutive_failures = failed_attempts_cache.get(cache_key, 0)
+    
+    if phonetic_result == "yakin":
+        should_call_ai = True
+    elif phonetic_result == "yanlis":
+        # Track failures
+        failed_attempts_cache[cache_key] = consecutive_failures + 1
+        if consecutive_failures + 1 >= 2:
+            should_call_ai = True
+    
+    # Step 3: Call AI if needed (and API key available)
+    final_result = phonetic_result
+    final_feedback = phonetic_feedback
+    used_ai = False
+    
+    if should_call_ai and OPENROUTER_API_KEY:
+        ai_response = await call_openrouter_ai(target, spoken)
+        if ai_response:
+            used_ai = True
+            final_result = ai_response.get('result', phonetic_result)
+            ai_feedback = ai_response.get('feedback')
+            if ai_feedback:
+                final_feedback = ai_feedback
+    
+    # Update failure cache based on final result
+    if final_result == "dogru":
+        if cache_key in failed_attempts_cache:
+            del failed_attempts_cache[cache_key]
+    elif final_result == "yanlis":
+        failed_attempts_cache[cache_key] = failed_attempts_cache.get(cache_key, 0) + 1
+    
+    return PronunciationCheckResponse(
+        result=final_result,
+        feedback=final_feedback,
+        similarity_percentage=round(similarity, 1),
+        used_ai=used_ai
+    )
+
 @api_router.post("/progress", response_model=ProgressResponse)
 async def save_progress(
     progress_data: ProgressCreate,
