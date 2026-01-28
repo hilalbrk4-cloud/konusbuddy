@@ -26,7 +26,8 @@ const RecommendationCard = () => {
       
       try {
         const response = await axios.get(`${API}/recommendations`, {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
+          timeout: 15000
         });
         if (isMounted) {
           setRecommendations(response.data);
@@ -41,10 +42,14 @@ const RecommendationCard = () => {
       }
     };
 
-    fetchRecommendations();
+    // Small delay to ensure token is ready
+    const timer = setTimeout(() => {
+      fetchRecommendations();
+    }, 500);
     
     return () => {
       isMounted = false;
+      clearTimeout(timer);
     };
   }, [token]);
 
