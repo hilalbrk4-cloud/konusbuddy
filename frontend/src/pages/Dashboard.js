@@ -7,6 +7,7 @@ import {
   ChevronRight, BookOpen, BarChart3
 } from "lucide-react";
 import { Progress } from "../components/ui/progress";
+import ChatAssistant from "../components/ChatAssistant";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
