@@ -980,19 +980,25 @@ Zorluk Seviyesi Performansı:
             
             # Parse JSON response
             import json
+            import re
             try:
                 # Clean up response - remove markdown code blocks if present
                 clean_response = ai_response.strip()
-                if clean_response.startswith("```"):
-                    clean_response = clean_response.split("```")[1]
-                    if clean_response.startswith("json"):
-                        clean_response = clean_response[4:]
-                clean_response = clean_response.strip()
+                
+                # Try to find JSON in the response
+                json_match = re.search(r'\{[\s\S]*\}', clean_response)
+                if json_match:
+                    clean_response = json_match.group(0)
                 
                 return json.loads(clean_response)
-            except json.JSONDecodeError:
-                logger.error(f"Failed to parse AI response: {ai_response}")
-                return None
+            except json.JSONDecodeError as e:
+                logger.error(f"Failed to parse AI response: {e}")
+                # Return a basic structure if parsing fails
+                return {
+                    "analysis": "Verileriniz analiz edildi.",
+                    "recommendations": [],
+                    "encouragement": "Harika gidiyorsun! 🌟"
+                }
                 
     except Exception as e:
         logger.error(f"Recommendation API error: {e}")
