@@ -119,16 +119,21 @@ const ExercisePage = () => {
   const checkAnswer = async (spoken) => {
     if (!currentExercise) return;
 
-    const targetWord = currentExercise.word.toLowerCase().trim();
-    const spokenWord = spoken.toLowerCase().trim();
-    
-    // Flexible matching - check if spoken contains target or vice versa
-    const isCorrect = spokenWord.includes(targetWord) || 
-                      targetWord.includes(spokenWord) ||
-                      levenshteinDistance(spokenWord, targetWord) <= Math.floor(targetWord.length * 0.3);
-
-    // Save progress
     try {
+      // Call backend pronunciation check API
+      const checkResponse = await axios.post(`${API}/pronunciation-check`, {
+        target_word: currentExercise.word,
+        spoken_word: spoken,
+        word_id: currentExercise.id
+      }, { headers: getAuthHeaders() });
+
+      const { result, feedback: aiFeedback, similarity_percentage } = checkResponse.data;
+      
+      // Determine if correct based on result
+      const isCorrect = result === 'dogru';
+      const isClose = result === 'yakin';
+
+      // Save progress
       await axios.post(`${API}/progress`, {
         word_id: currentExercise.id,
         spoken_word: spoken,
@@ -136,37 +141,62 @@ const ExercisePage = () => {
         difficulty: currentExercise.difficulty,
         category: currentExercise.category
       }, { headers: getAuthHeaders() });
+
+      setSessionStats(prev => ({
+        correct: prev.correct + (isCorrect ? 1 : 0),
+        total: prev.total + 1
+      }));
+
+      if (isCorrect) {
+        // SUCCESS - dogru
+        setFeedback({
+          type: 'success',
+          message: getSuccessMessage()
+        });
+        const successUtterance = new SpeechSynthesisUtterance("Harika!");
+        successUtterance.lang = 'tr-TR';
+        successUtterance.rate = 1;
+        window.speechSynthesis.speak(successUtterance);
+      } else if (isClose) {
+        // CLOSE - yakin (encouragement + try again)
+        setFeedback({
+          type: 'close',
+          message: aiFeedback || `Çok yaklaştın! (%${Math.round(similarity_percentage)}) Bir kez daha dene!`
+        });
+        const closeUtterance = new SpeechSynthesisUtterance("Yaklaştın! Tekrar dene.");
+        closeUtterance.lang = 'tr-TR';
+        closeUtterance.rate = 0.9;
+        window.speechSynthesis.speak(closeUtterance);
+      } else {
+        // WRONG - yanlis
+        setFeedback({
+          type: 'error',
+          message: aiFeedback || getErrorMessage()
+        });
+        setTimeout(() => {
+          const correctUtterance = new SpeechSynthesisUtterance(`Doğrusu: ${currentExercise.word}`);
+          correctUtterance.lang = 'tr-TR';
+          correctUtterance.rate = 0.6;
+          window.speechSynthesis.speak(correctUtterance);
+        }, 1000);
+      }
     } catch (error) {
-      console.error("Error saving progress:", error);
-    }
+      console.error("Error checking pronunciation:", error);
+      // Fallback to simple check if API fails
+      const targetWord = currentExercise.word.toLowerCase().trim();
+      const spokenWord = spoken.toLowerCase().trim();
+      const isCorrect = targetWord === spokenWord;
+      
+      setSessionStats(prev => ({
+        correct: prev.correct + (isCorrect ? 1 : 0),
+        total: prev.total + 1
+      }));
 
-    setSessionStats(prev => ({
-      correct: prev.correct + (isCorrect ? 1 : 0),
-      total: prev.total + 1
-    }));
-
-    if (isCorrect) {
-      setFeedback({
-        type: 'success',
-        message: getSuccessMessage()
-      });
-      // Play success sound simulation via speech
-      const successUtterance = new SpeechSynthesisUtterance("Harika!");
-      successUtterance.lang = 'tr-TR';
-      successUtterance.rate = 1;
-      window.speechSynthesis.speak(successUtterance);
-    } else {
-      setFeedback({
-        type: 'error',
-        message: getErrorMessage()
-      });
-      // Speak the correct word slowly
-      setTimeout(() => {
-        const correctUtterance = new SpeechSynthesisUtterance(`Doğrusu: ${currentExercise.word}`);
-        correctUtterance.lang = 'tr-TR';
-        correctUtterance.rate = 0.6;
-        window.speechSynthesis.speak(correctUtterance);
-      }, 1000);
+      if (isCorrect) {
+        setFeedback({ type: 'success', message: getSuccessMessage() });
+      } else {
+        setFeedback({ type: 'error', message: getErrorMessage() });
+      }
     }
   };
 
