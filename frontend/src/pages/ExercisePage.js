@@ -456,6 +456,10 @@ const ExercisePage = () => {
           <div className={`feedback-modal ${feedback.type}`}>
             {feedback.type === 'success' ? (
               <CheckCircle className="w-24 h-24 text-[#06D6A0]" />
+            ) : feedback.type === 'close' ? (
+              <div className="w-24 h-24 bg-[#FFD166] rounded-full flex items-center justify-center">
+                <span className="text-5xl">💪</span>
+              </div>
             ) : (
               <XCircle className="w-24 h-24 text-[#EF476F]" />
             )}
@@ -470,8 +474,14 @@ const ExercisePage = () => {
               </p>
             )}
             
+            {feedback.type === 'close' && (
+              <p className="text-lg text-[#8D99AE]">
+                Hedef kelime: <strong className="text-[#073B4C]">{currentExercise?.word}</strong>
+              </p>
+            )}
+            
             <div className="flex gap-4 mt-4">
-              {feedback.type === 'error' && (
+              {(feedback.type === 'error' || feedback.type === 'close') && (
                 <button
                   onClick={tryAgain}
                   data-testid="try-again-btn"
