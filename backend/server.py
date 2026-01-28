@@ -107,6 +107,20 @@ class UserStats(BaseModel):
     total_attempts: int
     correct_attempts: int
     accuracy_percentage: float
+
+# ============ PRONUNCIATION CHECK MODELS ============
+
+class PronunciationCheckRequest(BaseModel):
+    target_word: str
+    spoken_word: str
+    word_id: str
+    user_id: Optional[str] = None
+
+class PronunciationCheckResponse(BaseModel):
+    result: str  # dogru, yakin, yanlis
+    feedback: Optional[str] = None
+    similarity_percentage: float
+    used_ai: bool = False
     easy_completed: int
     medium_completed: int
     hard_completed: int
