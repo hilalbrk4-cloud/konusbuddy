@@ -68,3 +68,27 @@
 2. Ebeveyn için detaylı rapor paneli
 3. Günlük egzersiz hatırlatıcıları
 4. Çoklu profil desteği
+
+---
+## Update: Jan 28, 2025 - Fonetik Analiz & AI Desteği
+
+### Yeni Özellikler
+- ✅ Fonetik benzerlik analizi (Levenshtein Distance)
+- ✅ 3 seviyeli değerlendirme: dogru / yakin / yanlis
+- ✅ İlk harf kontrolü (kedi → tedi ASLA doğru sayılmaz)
+- ✅ OpenRouter AI desteği (opsiyonel, nadir kullanım)
+- ✅ Çocuk dostu geri bildirim mesajları
+
+### API Endpoint
+`POST /api/pronunciation-check`
+- Fonetik analiz önce çalışır (ücretsiz)
+- AI sadece gerekli durumlarda çağrılır
+
+### Eşikler
+- ≥92% benzerlik → dogru
+- 75-91% benzerlik → yakin
+- <75% benzerlik → yanlis
+
+### Güvenlik
+- OpenRouter API key sadece backend'de
+- Frontend hiçbir zaman API key görmez
