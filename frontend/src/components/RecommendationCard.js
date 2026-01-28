@@ -1,38 +1,67 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { 
   Sparkles, AlertCircle, ChevronRight, Target, 
-  TrendingUp, RefreshCw, Loader2, BookOpen
+  RefreshCw, Loader2, BookOpen
 } from "lucide-react";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const RecommendationCard = () => {
-  const { getAuthHeaders } = useAuth();
+  const { token } = useAuth();
   const [recommendations, setRecommendations] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchRecommendations = useCallback(async () => {
+  useEffect(() => {
+    let isMounted = true;
+    
+    const fetchRecommendations = async () => {
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+      
+      try {
+        const response = await axios.get(`${API}/recommendations`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (isMounted) {
+          setRecommendations(response.data);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error fetching recommendations:", err);
+        if (isMounted) {
+          setError("Öneriler yüklenemedi");
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchRecommendations();
+    
+    return () => {
+      isMounted = false;
+    };
+  }, [token]);
+
+  const handleRefresh = async () => {
     setLoading(true);
     setError(null);
     try {
-      const headers = getAuthHeaders();
-      const response = await axios.get(`${API}/recommendations`, { headers });
+      const response = await axios.get(`${API}/recommendations`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setRecommendations(response.data);
     } catch (err) {
-      console.error("Error fetching recommendations:", err);
       setError("Öneriler yüklenemedi");
     } finally {
       setLoading(false);
     }
-  }, [getAuthHeaders]);
-
-  useEffect(() => {
-    fetchRecommendations();
-  }, [fetchRecommendations]);
+  };
 
   if (loading) {
     return (
@@ -51,7 +80,7 @@ const RecommendationCard = () => {
           <AlertCircle className="w-6 h-6" />
           <span className="font-medium">{error}</span>
           <button 
-            onClick={fetchRecommendations}
+            onClick={handleRefresh}
             className="ml-auto p-2 hover:bg-white/50 rounded-full transition-colors"
           >
             <RefreshCw className="w-5 h-5" />
@@ -77,7 +106,7 @@ const RecommendationCard = () => {
           </div>
         </div>
         <button 
-          onClick={fetchRecommendations}
+          onClick={handleRefresh}
           data-testid="refresh-recommendations"
           className="p-2 hover:bg-white/50 rounded-full transition-colors"
           title="Yenile"
