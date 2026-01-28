@@ -331,6 +331,10 @@ code {
     border: 8px solid var(--success);
 }
 
+.feedback-modal.close {
+    border: 8px solid var(--secondary);
+}
+
 .feedback-modal.error {
     border: 8px solid var(--accent);
 }
