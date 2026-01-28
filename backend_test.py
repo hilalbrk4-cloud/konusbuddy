@@ -384,6 +384,7 @@ class TurkishSpeechTherapyAPITester:
             self.test_health_endpoints()
             self.test_auth_flow()
             self.test_exercise_endpoints()
+            self.test_pronunciation_check_endpoint()  # New pronunciation tests
             self.test_progress_endpoints()
             self.test_protected_routes()
             self.test_invalid_requests()
