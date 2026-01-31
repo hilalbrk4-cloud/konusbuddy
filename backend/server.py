@@ -485,12 +485,12 @@ EXERCISES = [
     {"id": "44", "word": "Aslan", "image_url": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": "As-lan"},
     {"id": "45", "word": "Timsah", "image_url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": "Tim-sah"},
     
-    # Daily phrases - İkon/sembol görselleri
-    {"id": "46", "word": "Günaydın", "image_url": "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Gü-nay-dın"},
-    {"id": "47", "word": "İyi geceler", "image_url": "https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "İ-yi ge-ce-ler"},
+    # Daily phrases - Sembolik görseller
+    {"id": "46", "word": "Günaydın", "image_url": "https://images.unsplash.com/photo-1615175252539-a8593d7c10c7?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Gü-nay-dın"},
+    {"id": "47", "word": "İyi geceler", "image_url": "https://images.unsplash.com/photo-1612645954457-87fa856e1efd?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "İ-yi ge-ce-ler"},
     {"id": "48", "word": "Teşekkürler", "image_url": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Te-şek-kür-ler"},
     {"id": "49", "word": "Lütfen", "image_url": "https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Lüt-fen"},
-    {"id": "50", "word": "Merhaba", "image_url": "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Mer-ha-ba"},
+    {"id": "50", "word": "Merhaba", "image_url": "https://images.unsplash.com/photo-1651506297740-e8914b489e38?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Mer-ha-ba"},
     
     # Body parts - Net vücut parçası görselleri
     {"id": "51", "word": "El", "image_url": "https://images.unsplash.com/photo-1516749712236-67f5688a642a?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "El"},
