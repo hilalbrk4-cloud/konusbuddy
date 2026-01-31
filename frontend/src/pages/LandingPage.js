@@ -64,14 +64,40 @@ const LandingPage = () => {
             </div>
           </div>
           
-          {/* Hero Image */}
+          {/* Hero Image - Modern, çocuk yüzü içermeyen illüstrasyon */}
           <div className="flex-1 relative">
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1758612897668-ce0c153745e4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGNoaWxkJTIwdXNpbmclMjB0YWJsZXR8ZW58MHx8fHwxNzY5MTg1MDk2fDA&ixlib=rb-4.1.0&q=85&w=600"
-                alt="Mutlu çocuk öğreniyor"
-                className="rounded-3xl shadow-2xl w-full max-w-lg mx-auto"
-              />
+            <div className="relative bg-gradient-to-br from-[#4CC9F0]/20 to-[#9B5DE5]/20 rounded-3xl p-8 max-w-lg mx-auto">
+              {/* Abstract Speech Therapy Illustration */}
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="bg-[#FFD166] rounded-2xl p-4 flex items-center justify-center animate-float shadow-lg">
+                  <span className="text-4xl">🎯</span>
+                </div>
+                <div className="bg-[#4CC9F0] rounded-2xl p-4 flex items-center justify-center animate-float shadow-lg" style={{ animationDelay: '0.3s' }}>
+                  <Mic className="w-10 h-10 text-white" />
+                </div>
+                <div className="bg-[#06D6A0] rounded-2xl p-4 flex items-center justify-center animate-float shadow-lg" style={{ animationDelay: '0.6s' }}>
+                  <span className="text-4xl">⭐</span>
+                </div>
+              </div>
+              
+              {/* Word Cards Preview */}
+              <div className="bg-white rounded-2xl p-6 shadow-xl">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+                    <span className="text-3xl">🐱</span>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-black text-[#073B4C]">Kedi</p>
+                    <p className="text-sm text-[#8D99AE]">Ke-di</p>
+                  </div>
+                  <Volume2 className="w-8 h-8 text-[#4CC9F0] ml-auto" />
+                </div>
+                <div className="flex gap-2">
+                  <span className="bg-[#06D6A0]/20 text-[#06D6A0] px-3 py-1 rounded-full text-sm font-bold">Kolay</span>
+                  <span className="bg-[#4CC9F0]/20 text-[#4CC9F0] px-3 py-1 rounded-full text-sm font-bold">Hayvanlar</span>
+                </div>
+              </div>
+              
               {/* Floating elements */}
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-[#FFD166] rounded-2xl flex items-center justify-center animate-float shadow-lg">
                 <Star className="w-8 h-8 text-[#073B4C]" />
