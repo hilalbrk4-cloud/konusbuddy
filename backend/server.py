@@ -493,15 +493,15 @@ EXERCISES = [
     {"id": "50", "word": "Merhaba", "image_url": "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Mer-ha-ba"},
     
     # Body parts - Net vücut parçası görselleri
-    {"id": "51", "word": "El", "image_url": "https://images.unsplash.com/photo-1574169208507-84376144848b?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "El"},
-    {"id": "52", "word": "Ayak", "image_url": "https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "A-yak"},
+    {"id": "51", "word": "El", "image_url": "https://images.unsplash.com/photo-1516749712236-67f5688a642a?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "El"},
+    {"id": "52", "word": "Ayak", "image_url": "https://images.unsplash.com/photo-1754560397228-78abc90e0a21?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "A-yak"},
     {"id": "53", "word": "Göz", "image_url": "https://images.unsplash.com/photo-1494869042583-f6c911f04b4c?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "Göz"},
     {"id": "54", "word": "Kulak", "image_url": "https://images.unsplash.com/photo-1590422749897-47036da0b0ff?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "Ku-lak"},
     {"id": "55", "word": "Burun", "image_url": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": "Bu-run"},
     {"id": "56", "word": "Parmak", "image_url": "https://images.unsplash.com/photo-1559526324-593bc073d938?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": "Par-mak"},
     {"id": "57", "word": "Dirsek", "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": "Dir-sek"},
-    {"id": "58", "word": "Diz", "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": "Diz"},
-    {"id": "59", "word": "Omuz", "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": "O-muz"},
+    {"id": "58", "word": "Diz", "image_url": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": "Diz"},
+    {"id": "59", "word": "Omuz", "image_url": "https://images.unsplash.com/photo-1599817878414-43ef36677cf0?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": "O-muz"},
     {"id": "60", "word": "Kalp", "image_url": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "Kalp"},
 ]
 
