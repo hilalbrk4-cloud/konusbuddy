@@ -460,7 +460,7 @@ EXERCISES = [
     {"id": "26", "word": "Turuncu", "image_url": "https://images.unsplash.com/photo-1557683316-973673baf926?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Tu-run-cu"},
     {"id": "27", "word": "Pembe", "image_url": "https://images.unsplash.com/photo-1558470598-a5dda9640f68?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Pem-be"},
     {"id": "28", "word": "Mor", "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Mor"},
-    {"id": "29", "word": "Kahverengi", "image_url": "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Kah-ve-ren-gi"},
+    {"id": "29", "word": "Kahverengi", "image_url": "https://images.unsplash.com/photo-1644931551533-02906718127f?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Kah-ve-ren-gi"},
     {"id": "30", "word": "Gri", "image_url": "https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Gri"},
     
     # Objects
