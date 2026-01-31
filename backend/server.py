@@ -446,7 +446,7 @@ EXERCISES = [
     {"id": "17", "word": "Muz", "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Muz"},
     {"id": "18", "word": "Ekmek", "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Ek-mek"},
     {"id": "19", "word": "Su", "image_url": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Su"},
-    {"id": "20", "word": "Süt", "image_url": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Süt"},
+    {"id": "20", "word": "Süt", "image_url": "https://images.unsplash.com/photo-1549127024-18ee7271c819?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Süt"},
     
     # MEDIUM - Two syllable words (Orta)
     # Animals
