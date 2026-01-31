@@ -428,10 +428,10 @@ EXERCISES = [
     {"id": "5", "word": "At", "image_url": "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": "At"},
     
     # Colors - Tek renk, sade arka plan
-    {"id": "6", "word": "Kırmızı", "image_url": "https://images.unsplash.com/photo-1562176566-e9afd27531d4?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Kır-mı-zı"},
-    {"id": "7", "word": "Mavi", "image_url": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Ma-vi"},
-    {"id": "8", "word": "Sarı", "image_url": "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Sa-rı"},
-    {"id": "9", "word": "Yeşil", "image_url": "https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Ye-şil"},
+    {"id": "6", "word": "Kırmızı", "image_url": "https://images.unsplash.com/photo-1751780607021-5c9c036f8ad4?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Kır-mı-zı"},
+    {"id": "7", "word": "Mavi", "image_url": "https://images.unsplash.com/photo-1582184850228-bd516ee3f941?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Ma-vi"},
+    {"id": "8", "word": "Sarı", "image_url": "https://images.unsplash.com/photo-1768122466154-07d4d6ebb802?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Sa-rı"},
+    {"id": "9", "word": "Yeşil", "image_url": "https://images.unsplash.com/photo-1692805949033-4212d6f6baec?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Ye-şil"},
     {"id": "10", "word": "Beyaz", "image_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Be-yaz"},
     
     # Objects - Net, tek nesne görselleri
