@@ -421,88 +421,88 @@ async def get_me(current_user: dict = Depends(get_current_user)):
 EXERCISES = [
     # EASY - Simple words (Kolay)
     # Animals - Net, sade hayvan fotoğrafları
-    {"id": "1", "word": "Kedi", "image_url": "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": "Ke-di"},
-    {"id": "2", "word": "Köpek", "image_url": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": "Kö-pek"},
-    {"id": "3", "word": "Kuş", "image_url": "https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": "Kuş"},
-    {"id": "4", "word": "Balık", "image_url": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": "Ba-lık"},
-    {"id": "5", "word": "At", "image_url": "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": "At"},
+    {"id": "1", "word": "Kedi", "image_url": "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "2", "word": "Köpek", "image_url": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "3", "word": "Kuş", "image_url": "https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "4", "word": "Balık", "image_url": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "5", "word": "At", "image_url": "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": None},
     
     # Colors - Tek renk, sade arka plan
-    {"id": "6", "word": "Kırmızı", "image_url": "https://images.unsplash.com/photo-1751780607021-5c9c036f8ad4?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Kır-mı-zı"},
-    {"id": "7", "word": "Mavi", "image_url": "https://images.unsplash.com/photo-1766941288581-689187dd57d5?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Ma-vi"},
-    {"id": "8", "word": "Sarı", "image_url": "https://images.unsplash.com/photo-1768122466154-07d4d6ebb802?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Sa-rı"},
-    {"id": "9", "word": "Yeşil", "image_url": "https://images.unsplash.com/photo-1692805949033-4212d6f6baec?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Ye-şil"},
-    {"id": "10", "word": "Beyaz", "image_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": "Be-yaz"},
+    {"id": "6", "word": "Kırmızı", "image_url": "https://images.unsplash.com/photo-1751780607021-5c9c036f8ad4?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "7", "word": "Mavi", "image_url": "https://images.unsplash.com/photo-1766941288581-689187dd57d5?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "8", "word": "Sarı", "image_url": "https://images.unsplash.com/photo-1768122466154-07d4d6ebb802?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "9", "word": "Yeşil", "image_url": "https://images.unsplash.com/photo-1692805949033-4212d6f6baec?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "10", "word": "Beyaz", "image_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
     
     # Objects - Net, tek nesne görselleri
-    {"id": "11", "word": "Top", "image_url": "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": "Top"},
-    {"id": "12", "word": "Araba", "image_url": "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": "A-ra-ba"},
-    {"id": "13", "word": "Ev", "image_url": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": "Ev"},
-    {"id": "14", "word": "Masa", "image_url": "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": "Ma-sa"},
-    {"id": "15", "word": "Kitap", "image_url": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": "Ki-tap"},
+    {"id": "11", "word": "Top", "image_url": "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "12", "word": "Araba", "image_url": "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "13", "word": "Ev", "image_url": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "14", "word": "Masa", "image_url": "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "15", "word": "Kitap", "image_url": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
     
     # Foods - Tek yiyecek, sade arka plan
-    {"id": "16", "word": "Elma", "image_url": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "El-ma"},
-    {"id": "17", "word": "Muz", "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Muz"},
-    {"id": "18", "word": "Ekmek", "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Ek-mek"},
-    {"id": "19", "word": "Su", "image_url": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Su"},
-    {"id": "20", "word": "Süt", "image_url": "https://images.unsplash.com/photo-1549127024-18ee7271c819?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": "Süt"},
+    {"id": "16", "word": "Elma", "image_url": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "17", "word": "Muz", "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "18", "word": "Ekmek", "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "19", "word": "Su", "image_url": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "20", "word": "Süt", "image_url": "https://images.unsplash.com/photo-1549127024-18ee7271c819?w=400", "category": "foods", "difficulty": "easy", "pronunciation_hint": None},
     
     # MEDIUM - Two syllable words (Orta)
     # Animals
-    {"id": "21", "word": "Kelebek", "image_url": "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": "Ke-le-bek"},
-    {"id": "22", "word": "Tavşan", "image_url": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": "Tav-şan"},
-    {"id": "23", "word": "Kaplumbağa", "image_url": "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": "Kap-lum-ba-ğa"},
-    {"id": "24", "word": "Penguen", "image_url": "https://images.unsplash.com/photo-1462888210965-cdf193fb74de?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": "Pen-gu-en"},
-    {"id": "25", "word": "Maymun", "image_url": "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": "May-mun"},
+    {"id": "21", "word": "Kelebek", "image_url": "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "22", "word": "Tavşan", "image_url": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "23", "word": "Kaplumbağa", "image_url": "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "24", "word": "Penguen", "image_url": "https://images.unsplash.com/photo-1462888210965-cdf193fb74de?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "25", "word": "Maymun", "image_url": "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
     
     # Colors - Sade renk görselleri
-    {"id": "26", "word": "Turuncu", "image_url": "https://images.unsplash.com/photo-1557683316-973673baf926?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Tu-run-cu"},
-    {"id": "27", "word": "Pembe", "image_url": "https://images.unsplash.com/photo-1558470598-a5dda9640f68?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Pem-be"},
-    {"id": "28", "word": "Mor", "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Mor"},
-    {"id": "29", "word": "Kahverengi", "image_url": "https://images.unsplash.com/photo-1644931551533-02906718127f?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Kah-ve-ren-gi"},
-    {"id": "30", "word": "Gri", "image_url": "https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": "Gri"},
+    {"id": "26", "word": "Turuncu", "image_url": "https://images.unsplash.com/photo-1557683316-973673baf926?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "27", "word": "Pembe", "image_url": "https://images.unsplash.com/photo-1558470598-a5dda9640f68?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "28", "word": "Mor", "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "29", "word": "Kahverengi", "image_url": "https://images.unsplash.com/photo-1644931551533-02906718127f?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "30", "word": "Gri", "image_url": "https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
     
     # Objects
-    {"id": "31", "word": "Bilgisayar", "image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": "Bil-gi-sa-yar"},
-    {"id": "32", "word": "Telefon", "image_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": "Te-le-fon"},
-    {"id": "33", "word": "Televizyon", "image_url": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": "Te-le-viz-yon"},
-    {"id": "34", "word": "Buzdolabı", "image_url": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": "Buz-do-la-bı"},
-    {"id": "35", "word": "Sandalye", "image_url": "https://images.unsplash.com/photo-1503602642458-232111445657?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": "San-dal-ye"},
+    {"id": "31", "word": "Bilgisayar", "image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "32", "word": "Telefon", "image_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "33", "word": "Televizyon", "image_url": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "34", "word": "Buzdolabı", "image_url": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "35", "word": "Sandalye", "image_url": "https://images.unsplash.com/photo-1503602642458-232111445657?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
     
     # Foods
-    {"id": "36", "word": "Portakal", "image_url": "https://images.unsplash.com/photo-1547514701-42782101795e?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": "Por-ta-kal"},
-    {"id": "37", "word": "Çikolata", "image_url": "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": "Çi-ko-la-ta"},
-    {"id": "38", "word": "Dondurma", "image_url": "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": "Don-dur-ma"},
-    {"id": "39", "word": "Sandviç", "image_url": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": "Sand-viç"},
-    {"id": "40", "word": "Makarna", "image_url": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": "Ma-kar-na"},
+    {"id": "36", "word": "Portakal", "image_url": "https://images.unsplash.com/photo-1547514701-42782101795e?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "37", "word": "Çikolata", "image_url": "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "38", "word": "Dondurma", "image_url": "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "39", "word": "Sandviç", "image_url": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "40", "word": "Makarna", "image_url": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": None},
     
     # HARD - Complex words and sentences (Zor)
     # Animals - Hayvan fotoğrafları
-    {"id": "41", "word": "Sincap", "image_url": "https://images.unsplash.com/photo-1507666405895-422eee7d517f?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": "Sin-cap"},
-    {"id": "42", "word": "Fil", "image_url": "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": "Fil"},
-    {"id": "43", "word": "Zürafa", "image_url": "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": "Zü-ra-fa"},
-    {"id": "44", "word": "Aslan", "image_url": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": "As-lan"},
-    {"id": "45", "word": "Timsah", "image_url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": "Tim-sah"},
+    {"id": "41", "word": "Sincap", "image_url": "https://images.unsplash.com/photo-1507666405895-422eee7d517f?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "42", "word": "Fil", "image_url": "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "43", "word": "Zürafa", "image_url": "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "44", "word": "Aslan", "image_url": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "45", "word": "Timsah", "image_url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
     
     # Daily phrases - Sembolik görseller
-    {"id": "46", "word": "Günaydın", "image_url": "https://images.unsplash.com/photo-1615175252539-a8593d7c10c7?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Gü-nay-dın"},
-    {"id": "47", "word": "İyi geceler", "image_url": "https://images.unsplash.com/photo-1612645954457-87fa856e1efd?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "İ-yi ge-ce-ler"},
-    {"id": "48", "word": "Teşekkürler", "image_url": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Te-şek-kür-ler"},
-    {"id": "49", "word": "Lütfen", "image_url": "https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Lüt-fen"},
-    {"id": "50", "word": "Merhaba", "image_url": "https://images.unsplash.com/photo-1651506297740-e8914b489e38?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": "Mer-ha-ba"},
+    {"id": "46", "word": "Günaydın", "image_url": "https://images.unsplash.com/photo-1615175252539-a8593d7c10c7?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "47", "word": "İyi geceler", "image_url": "https://images.unsplash.com/photo-1612645954457-87fa856e1efd?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "48", "word": "Teşekkürler", "image_url": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "49", "word": "Lütfen", "image_url": "https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "50", "word": "Merhaba", "image_url": "https://images.unsplash.com/photo-1651506297740-e8914b489e38?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
     
     # Body parts - Net vücut parçası görselleri
-    {"id": "51", "word": "El", "image_url": "https://images.unsplash.com/photo-1516749712236-67f5688a642a?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "El"},
-    {"id": "52", "word": "Ayak", "image_url": "https://images.unsplash.com/photo-1754560397228-78abc90e0a21?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "A-yak"},
-    {"id": "53", "word": "Göz", "image_url": "https://images.unsplash.com/photo-1494869042583-f6c911f04b4c?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "Göz"},
-    {"id": "54", "word": "Kulak", "image_url": "https://images.unsplash.com/photo-1590422749897-47036da0b0ff?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "Ku-lak"},
-    {"id": "55", "word": "Burun", "image_url": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": "Bu-run"},
-    {"id": "56", "word": "Parmak", "image_url": "https://images.unsplash.com/photo-1559526324-593bc073d938?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": "Par-mak"},
-    {"id": "57", "word": "Dirsek", "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": "Dir-sek"},
-    {"id": "58", "word": "Diz", "image_url": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": "Diz"},
-    {"id": "59", "word": "Omuz", "image_url": "https://images.unsplash.com/photo-1599817878414-43ef36677cf0?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": "O-muz"},
-    {"id": "60", "word": "Kalp", "image_url": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": "Kalp"},
+    {"id": "51", "word": "El", "image_url": "https://images.unsplash.com/photo-1516749712236-67f5688a642a?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "52", "word": "Ayak", "image_url": "https://images.unsplash.com/photo-1754560397228-78abc90e0a21?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "53", "word": "Göz", "image_url": "https://images.unsplash.com/photo-1494869042583-f6c911f04b4c?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "54", "word": "Kulak", "image_url": "https://images.unsplash.com/photo-1590422749897-47036da0b0ff?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "55", "word": "Burun", "image_url": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "56", "word": "Parmak", "image_url": "https://images.unsplash.com/photo-1559526324-593bc073d938?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "57", "word": "Dirsek", "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "58", "word": "Diz", "image_url": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "59", "word": "Omuz", "image_url": "https://images.unsplash.com/photo-1599817878414-43ef36677cf0?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "60", "word": "Kalp", "image_url": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
 ]
 
 # ============ EXERCISE ROUTES ============
