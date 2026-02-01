@@ -459,9 +459,9 @@ EXERCISES = [
     # Colors - Sade renk görselleri
     {"id": "26", "word": "Turuncu", "image_url": "https://images.unsplash.com/photo-1557683316-973673baf926?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
     {"id": "27", "word": "Pembe", "image_url": "https://images.unsplash.com/photo-1558470598-a5dda9640f68?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "28", "word": "Mor", "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "28", "word": "Mor", "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "29", "word": "Kahverengi", "image_url": "https://images.unsplash.com/photo-1644931551533-02906718127f?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "30", "word": "Gri", "image_url": "https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "30", "word": "Gri", "image_url": "https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
     
     # Objects
     {"id": "31", "word": "Bilgisayar", "image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
@@ -479,8 +479,8 @@ EXERCISES = [
     
     # HARD - Complex words and sentences (Zor)
     # Animals - Hayvan fotoğrafları
-    {"id": "41", "word": "Sincap", "image_url": "https://images.unsplash.com/photo-1507666405895-422eee7d517f?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
-    {"id": "42", "word": "Fil", "image_url": "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "41", "word": "Sincap", "image_url": "https://images.unsplash.com/photo-1507666405895-422eee7d517f?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "42", "word": "Fil", "image_url": "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "43", "word": "Zürafa", "image_url": "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
     {"id": "44", "word": "Aslan", "image_url": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
     {"id": "45", "word": "Timsah", "image_url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
@@ -500,7 +500,7 @@ EXERCISES = [
     {"id": "55", "word": "Burun", "image_url": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
     {"id": "56", "word": "Parmak", "image_url": "https://images.unsplash.com/photo-1559526324-593bc073d938?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
     {"id": "57", "word": "Dirsek", "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "58", "word": "Diz", "image_url": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "58", "word": "Diz", "image_url": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "59", "word": "Omuz", "image_url": "https://images.unsplash.com/photo-1599817878414-43ef36677cf0?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": None},
     {"id": "60", "word": "Kalp", "image_url": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
 ]
