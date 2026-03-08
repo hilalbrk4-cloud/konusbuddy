@@ -430,15 +430,15 @@ EXERCISES = [
     # Colors - Tek renk, sade arka plan
     {"id": "6", "word": "Kırmızı", "image_url": "https://images.unsplash.com/photo-1751780607021-5c9c036f8ad4?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "7", "word": "Mavi", "image_url": "https://images.unsplash.com/photo-1766941288581-689187dd57d5?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
-    {"id": "8", "word": "Sarı", "image_url": "https://images.unsplash.com/photo-1768122466154-07d4d6ebb802?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
-    {"id": "9", "word": "Yeşil", "image_url": "https://images.unsplash.com/photo-1692805949033-4212d6f6baec?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
-    {"id": "10", "word": "Beyaz", "image_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "8", "word": "Sarı", "image_url": "https://images.unsplash.com/flagged/photo-1593005510329-8a4035a7238f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8eWVsbG93JTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "9", "word": "Yeşil", "image_url": "https://images.unsplash.com/photo-1601370690183-1c7796ecec61?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JlZW4lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "10", "word": "Beyaz", "image_url": "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2hpdGUlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
     
     # Objects - Net, tek nesne görselleri
     {"id": "11", "word": "Top", "image_url": "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "12", "word": "Araba", "image_url": "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "13", "word": "Ev", "image_url": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
-    {"id": "14", "word": "Masa", "image_url": "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "14", "word": "Masa", "image_url": "https://images.unsplash.com/photo-1575435745494-d25c354515c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dGFibGVzfGVufDB8fDB8fHww", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "15", "word": "Kitap", "image_url": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400", "category": "objects", "difficulty": "easy", "pronunciation_hint": None},
     
     # Foods - Tek yiyecek, sade arka plan
@@ -450,25 +450,25 @@ EXERCISES = [
     
     # MEDIUM - Two syllable words (Orta)
     # Animals
-    {"id": "21", "word": "Kelebek", "image_url": "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "21", "word": "Kelebek", "image_url": "https://images.unsplash.com/photo-1564514476902-542f8c30121e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YnV0dGVyZmx5fGVufDB8fDB8fHww", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
     {"id": "22", "word": "Tavşan", "image_url": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "23", "word": "Kaplumbağa", "image_url": "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "23", "word": "Kaplumbağa", "image_url": "https://images.unsplash.com/photo-1508455858334-95337ba25607?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dG9ydG9pc2V8ZW58MHx8MHx8fDA%3D", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
     {"id": "24", "word": "Penguen", "image_url": "https://images.unsplash.com/photo-1462888210965-cdf193fb74de?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
     {"id": "25", "word": "Maymun", "image_url": "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=400", "category": "animals", "difficulty": "medium", "pronunciation_hint": None},
     
     # Colors - Sade renk görselleri
-    {"id": "26", "word": "Turuncu", "image_url": "https://images.unsplash.com/photo-1557683316-973673baf926?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "27", "word": "Pembe", "image_url": "https://images.unsplash.com/photo-1558470598-a5dda9640f68?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "28", "word": "Mor", "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
-    {"id": "29", "word": "Kahverengi", "image_url": "https://images.unsplash.com/photo-1644931551533-02906718127f?w=400", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "30", "word": "Gri", "image_url": "https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?w=400", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "26", "word": "Turuncu", "image_url": "https://images.unsplash.com/photo-1617957718614-8c23f060c2d0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b3JhbmdlJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "27", "word": "Pembe", "image_url": "https://images.unsplash.com/photo-1503455637927-730bce8583c0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGluayUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "28", "word": "Mor", "image_url": "https://images.unsplash.com/photo-1516889782132-fb580815f8f9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHB1cnBsZSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "29", "word": "Kahverengi", "image_url": "https://images.unsplash.com/photo-1571829604981-ea159f94e5ad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnJvd24lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww", "category": "colors", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "30", "word": "Gri", "image_url": "https://plus.unsplash.com/premium_photo-1701090939615-1794bbac5c06?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JheSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D", "category": "colors", "difficulty": "easy", "pronunciation_hint": None},
     
     # Objects
     {"id": "31", "word": "Bilgisayar", "image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
     {"id": "32", "word": "Telefon", "image_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
     {"id": "33", "word": "Televizyon", "image_url": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "34", "word": "Buzdolabı", "image_url": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "35", "word": "Sandalye", "image_url": "https://images.unsplash.com/photo-1503602642458-232111445657?w=400", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "34", "word": "Buzdolabı", "image_url": "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnJlZXplcnxlbnwwfHwwfHx8MA%3D%3D", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "35", "word": "Sandalye", "image_url": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hhaXJ8ZW58MHx8MHx8fDA%3D", "category": "objects", "difficulty": "medium", "pronunciation_hint": None},
     
     # Foods
     {"id": "36", "word": "Portakal", "image_url": "https://images.unsplash.com/photo-1547514701-42782101795e?w=400", "category": "foods", "difficulty": "medium", "pronunciation_hint": None},
@@ -483,26 +483,26 @@ EXERCISES = [
     {"id": "42", "word": "Fil", "image_url": "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=400", "category": "animals", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "43", "word": "Zürafa", "image_url": "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
     {"id": "44", "word": "Aslan", "image_url": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
-    {"id": "45", "word": "Timsah", "image_url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=400", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "45", "word": "Timsah", "image_url": "https://images.unsplash.com/photo-1677504391957-8235ae02b41b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNyb2NvZGlsZXxlbnwwfHwwfHx8MA%3D%3D", "category": "animals", "difficulty": "hard", "pronunciation_hint": None},
     
     # Daily phrases - Sembolik görseller
-    {"id": "46", "word": "Günaydın", "image_url": "https://images.unsplash.com/photo-1615175252539-a8593d7c10c7?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "46", "word": "Günaydın", "image_url": "https://images.unsplash.com/photo-1647420489661-54a88e7ad9a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29vZG1vcm5pbmd8ZW58MHx8MHx8fDA%3D", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
     {"id": "47", "word": "İyi geceler", "image_url": "https://images.unsplash.com/photo-1612645954457-87fa856e1efd?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
-    {"id": "48", "word": "Teşekkürler", "image_url": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
-    {"id": "49", "word": "Lütfen", "image_url": "https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
-    {"id": "50", "word": "Merhaba", "image_url": "https://images.unsplash.com/photo-1651506297740-e8914b489e38?w=400", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "48", "word": "Teşekkürler", "image_url": "https://media.istockphoto.com/id/2214929016/photo/two-businesswomen-showing-gratitude-and-appreciation-during-a-meeting.webp?a=1&b=1&s=612x612&w=0&k=20&c=4j3GhTA28Sk1O9f0Lwpg1XBanZCD7CqwQleDVagMK58=", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "49", "word": "Lütfen", "image_url": "https://images.unsplash.com/photo-1752937300002-7194f8aef367?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGhlbGxvJTIwZ2VzdHVyZXxlbnwwfHwwfHx8MA%3D%3D", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "50", "word": "Merhaba", "image_url": "https://media.istockphoto.com/id/1296687900/photo/video-conference-online-business-call.webp?a=1&b=1&s=612x612&w=0&k=20&c=1F1mDl9OkWv-7g0FHWmwWVxqiVUEv9gJZqXPhVMaZDI=", "category": "phrases", "difficulty": "hard", "pronunciation_hint": None},
     
     # Body parts - Net vücut parçası görselleri
     {"id": "51", "word": "El", "image_url": "https://images.unsplash.com/photo-1516749712236-67f5688a642a?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "52", "word": "Ayak", "image_url": "https://images.unsplash.com/photo-1754560397228-78abc90e0a21?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
     {"id": "53", "word": "Göz", "image_url": "https://images.unsplash.com/photo-1494869042583-f6c911f04b4c?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
-    {"id": "54", "word": "Kulak", "image_url": "https://images.unsplash.com/photo-1590422749897-47036da0b0ff?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
-    {"id": "55", "word": "Burun", "image_url": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "56", "word": "Parmak", "image_url": "https://images.unsplash.com/photo-1559526324-593bc073d938?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "57", "word": "Dirsek", "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
-    {"id": "58", "word": "Diz", "image_url": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
-    {"id": "59", "word": "Omuz", "image_url": "https://images.unsplash.com/photo-1599817878414-43ef36677cf0?w=400", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": None},
-    {"id": "60", "word": "Kalp", "image_url": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "54", "word": "Kulak", "image_url": "https://images.unsplash.com/photo-1634656883281-3a665dd2bb8a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVhciUyMGltYWdlfGVufDB8fDB8fHww", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "55", "word": "Burun", "image_url": "https://plus.unsplash.com/premium_photo-1722887767149-ae3a7dd4af96?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bm9zZSUyMGltYWdlfGVufDB8fDB8fHww", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "56", "word": "Parmak", "image_url": "https://images.unsplash.com/photo-1723843865165-61d01e72451f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZpbmdlciUyMGltYWdlfGVufDB8fDB8fHww", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "57", "word": "Dirsek", "image_url": "https://media.istockphoto.com/id/533518151/photo/elbow-pain.webp?a=1&b=1&s=612x612&w=0&k=20&c=61UYv_xMzuyfqoQ3EPPxEC-NHRoRy8SM6jbp9t3WfYs=", "category": "body_parts", "difficulty": "medium", "pronunciation_hint": None},
+    {"id": "58", "word": "Diz", "image_url": "https://media.istockphoto.com/id/2200131434/photo/man-holding-his-knee-in-pain-hands-are-tightly-gripping-affected-area-there-is-tension-in-his.webp?a=1&b=1&s=612x612&w=0&k=20&c=flGPQK8z9iTWSR5c0DEqvdiF--JB1XOWOcnNOFMjeVs=", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
+    {"id": "59", "word": "Omuz", "image_url": "https://media.istockphoto.com/id/2198117302/photo/beautiful-blonde-woman-suffering-from-neck-pain-while-standing-in-her-bedroom-in-the-morning.webp?a=1&b=1&s=612x612&w=0&k=20&c=yPvRVqYsnpvMsec26tQVNrtpiwOZ_phwJFquChKRbNU=", "category": "body_parts", "difficulty": "hard", "pronunciation_hint": None},
+    {"id": "60", "word": "Kalp", "image_url": "https://media.istockphoto.com/id/1320317422/photo/heart-health-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=igCXcDRzdVAZkc00diinZ1Oxb6SkAycrPritT4jiADo=", "category": "body_parts", "difficulty": "easy", "pronunciation_hint": None},
 ]
 
 # ============ EXERCISE ROUTES ============
